@@ -1,4 +1,4 @@
-import Section from './Section';
+import Section from './section';
 
 export default function Sections({ sections }) {
   let secs = sections.map((section, idx) => {
