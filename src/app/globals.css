@@ -2,7 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold;
+  }
+  h2 {
+    @apply text-3xl lg:text-4xl mb-5;
+  }
+  h3 {
+    @apply text-xl mb-2;
+  }
+  h5,
+  h6 {
+    @apply text-base uppercase mb-2;
+  }
+  p {
+    @apply text-neutral-600 leading-8 text-sm md:text-base;
+  }
+  a {
+    @apply cursor-pointer inline-flex;
+  }
+  address {
+    @apply not-italic;
+  }
+
+  .link-primary {
+    @apply text-neutral-600 hover:text-primary-normal;
+  }
+  .link-secondary {
+    @apply text-orange underline;
+  }
+  .link-tertiary {
+    @apply text-primary-normal;
+  }
+}
+
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -14,14 +54,16 @@
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
-}
+} */
 
 body {
-  color: rgb(var(--foreground-rgb));
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  /* color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
 }
