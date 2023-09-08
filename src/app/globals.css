@@ -22,7 +22,7 @@
     @apply text-base uppercase mb-2;
   }
   p {
-    @apply text-neutral-600 leading-8 text-sm md:text-base;
+    @apply leading-8 text-sm md:text-base;
   }
   a {
     @apply cursor-pointer inline-flex;
@@ -32,7 +32,7 @@
   }
 
   .link-primary {
-    @apply text-neutral-600 hover:text-primary-normal;
+    @apply hover:text-primary-normal;
   }
   .link-secondary {
     @apply text-orange underline;

@@ -1,6 +1,4 @@
-'use client';
-
-import { useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import NavigationItem from './NavigationItem';
 import { EntryFieldTypes } from 'contentful';
 import Icon from '@mdi/react';
@@ -18,78 +16,110 @@ interface INavMenuProps {
   entry: TypeNavigationMenuFields;
   logoEntry: TypeImageWithFocalPointFields;
   type: 'Mobile' | 'Desktop';
-  handleClick?: () => void;
 }
 
-function DesktopNavbar({ maxWidth, entry, logoEntry, type }: INavMenuProps) {
-  interface INavigationItems
-    extends Array<any>,
-      EntryFieldTypes.Array<
-        EntryFieldTypes.EntryLink<TypeNavigationItemSkeleton>
-      > {}
+interface INavigationItems
+  extends Array<any>,
+    EntryFieldTypes.Array<
+      EntryFieldTypes.EntryLink<TypeNavigationItemSkeleton>
+    > {}
 
+function DesktopNavbar({ maxWidth, entry }: INavMenuProps) {
   return (
     <nav
       style={{ maxWidth: ` ${maxWidth}px` }}
-      className='m-auto px-6 py-2 font-black'
+      className='m-auto px-6 font-black'
     >
-      <ul className='flex flex-row text-white gap-10 text-xs my-2'>
-        {(entry.navigationItems as INavigationItems).map((ele, idx) => {
-          const entry = ele.fields;
-          return <NavigationItem key={idx} entry={entry} />;
-        })}
-      </ul>
+      {(entry.navigationItems as INavigationItems).length > 0 && (
+        <ul className='flex flex-row text-white gap-10 text-xs my-2'>
+          {(entry.navigationItems as INavigationItems).map((ele, idx) => {
+            return (
+              <li key={idx} className='flex items-center'>
+                <NavigationItem entry={ele.fields} type='Desktop' />
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </nav>
   );
 }
 
-function MobileNavbar({
-  maxWidth,
-  entry,
-  logoEntry,
-  type,
-  handleClick,
-}: INavMenuProps) {
+function MobileNavbar({ maxWidth, entry, logoEntry }: INavMenuProps) {
+  const {
+    showSidebar,
+    setShowSidebar,
+    showOfficeDetails,
+    setShowOfficeDetails,
+  } = useContext(AppContext) as AppContextType;
+
+  // handler functions to toggle sidebar/office info in mobile
+  function toggleSidebar() {
+    if (!showSidebar && showOfficeDetails) {
+      setShowOfficeDetails(!setShowOfficeDetails);
+    }
+    setShowSidebar(!showSidebar);
+  }
+
+  function toggleOfficeDetails() {
+    if (showSidebar && !showOfficeDetails) {
+      setShowSidebar(false);
+    }
+    setShowOfficeDetails(!showOfficeDetails);
+  }
+
+  const navHeight = document.getElementById('mobileNav')?.offsetHeight;
+
   return (
-    <nav
-      style={{ maxWidth: ` ${maxWidth}px` }}
-      className='flex flex-row items-center justify-between'
-    >
-      <div className='flex flex-row'>
-        <Icon path={mdiMenu} size={1.25} className='m-2' />
-        <div className='flex items-center'>
-          <ImageWithFocalPoint entry={logoEntry} />
+    <>
+      <nav
+        id='mobileNav'
+        style={{ maxWidth: ` ${maxWidth}px` }}
+        className='flex flex-row items-center justify-between border-b'
+      >
+        <div className='flex flex-row'>
+          <button onClick={toggleSidebar}>
+            <Icon path={mdiMenu} size={1.25} className='m-2' />
+          </button>
+          <div className='flex items-center'>
+            <ImageWithFocalPoint entry={logoEntry} />
+          </div>
         </div>
-      </div>
-      <button onClick={handleClick}>
-        <Icon path={mdiDotsVertical} size={1.25} className='m-2' />
-      </button>
-    </nav>
+        <button onClick={toggleOfficeDetails}>
+          <Icon path={mdiDotsVertical} size={1.25} className='m-2' />
+        </button>
+      </nav>
+      {showSidebar && (
+        <div className='flex flex-row'>
+          <nav
+            style={{ height: `calc(100vh - ${navHeight}px)` }}
+            className='bg-white w-[270px] border-r border-grey-500'
+          >
+            {(entry.navigationItems as INavigationItems).length > 0 && (
+              <ul className='flex flex-col text-ball-blue tracking-tight font-extrabold my-2'>
+                {(entry.navigationItems as INavigationItems).map((ele, idx) => {
+                  return (
+                    <li key={idx} className='flex items-center'>
+                      <NavigationItem entry={ele.fields} type='Mobile' />
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </nav>
+          {/* overlay to click out of sidebar */}
+          <div
+            className='bg-gray-100 opacity-20 grow'
+            onClick={toggleSidebar}
+          ></div>
+        </div>
+      )}
+    </>
   );
 }
 
 function NavigationMenu(props: INavMenuProps) {
   const { type } = props;
-
-  const { showOfficeDetails, setShowOfficeDetails } = useContext(
-    AppContext
-  ) as AppContextType;
-
-  // useEffect - add an event listener to check width, always show office details when desktop
-  useEffect(() => {
-    function checkScreenWidth() {
-      if (window.innerWidth > 1024) {
-        setShowOfficeDetails(true);
-      }
-    }
-    window.addEventListener('resize', checkScreenWidth);
-    return () => window.removeEventListener('resize', checkScreenWidth);
-  }, []);
-
-  const handleClick = () => {
-    setShowOfficeDetails(!showOfficeDetails);
-  };
-  props = { ...props, handleClick };
 
   if (type === 'Mobile') {
     return <MobileNavbar {...props} />;
