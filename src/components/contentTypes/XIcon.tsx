@@ -1,6 +1,6 @@
 import Icon from '@mdi/react';
 import * as Path from '@mdi/js';
-import { iconSizeMap } from '@/lib/utils';
+import { iconSizeMap } from '@/lib/utils/iconSizeMap';
 
 interface TypeXIconFields {
   [key: string]: any;

@@ -1,6 +1,6 @@
 import { TypeImageWithFocalPointFields } from '@/lib/generated-types';
 import Image from 'next/image';
-import { AssetDetails } from 'contentful';
+import { AssetDetails, EntryFieldTypes } from 'contentful';
 
 function ImageWithFocalPoint({
   entry,
@@ -13,7 +13,7 @@ function ImageWithFocalPoint({
   return (
     <Image
       src={`https:${logoImageEntry.file?.url}`}
-      alt={entry.altText as any}
+      alt={entry.altText.toString()}
       width={logoDimensions.image?.width}
       height={logoDimensions.image?.height}
     />

@@ -81,7 +81,13 @@ function DesktopNavigationItem({
         href={linkRoute}
       >
         <span className='block m-auto'>{label}</span>
-        {children?.length > 0 && <Icon path={mdiChevronDown} size={1} />}
+        {children?.length > 0 && (
+          <Icon
+            className='group-hover:animate-half-rotate-cc'
+            path={mdiChevronDown}
+            size={1}
+          />
+        )}
       </Link>
       {children?.length > 0 && (
         <ul className='flex flex-col absolute top-14 bg-white text-gray-500 font-normal z-1 w-[220px] hidden group-hover:block'>
@@ -89,7 +95,7 @@ function DesktopNavigationItem({
             return (
               <li
                 key={idx}
-                className='border-l border-r border-t last-of-type:border-b border-gray-500'
+                className='border-l border-r border-t last-of-type:border-b border-gray-200'
               >
                 <NavigationItem
                   entry={ele.fields}
