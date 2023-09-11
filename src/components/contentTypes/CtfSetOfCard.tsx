@@ -22,10 +22,10 @@ export default function CtfSetOfCard({
       style={{
         maxWidth: `${maxWidth}px`,
       }}
-      className={`lg:py-16 h-full w-full flex ${
+      className={`py-16 md:px-16 lg:px-48 h-full w-full ${
         cardDisplayStyle.toString() === 'Horizontal'
-          ? 'flex-row gap-6'
-          : 'flex-col'
+          ? 'grid gap-4 md:grid-cols-2 xl:grid-cols-4 justify-items-center'
+          : 'flex flex-col'
       } items-top justify-center`}
     >
       {(cards as ICards).length > 0 &&
