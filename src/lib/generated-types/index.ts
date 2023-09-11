@@ -1,6 +1,6 @@
+export type { TypeAddressCard, TypeAddressCardFields, TypeAddressCardSkeleton } from "./TypeAddressCard";
 export type { TypeBanner, TypeBannerFields, TypeBannerSkeleton } from "./TypeBanner";
 export type { TypeBannerCarousel, TypeBannerCarouselFields, TypeBannerCarouselSkeleton } from "./TypeBannerCarousel";
-export type { TypeCallToAction, TypeCallToActionFields, TypeCallToActionSkeleton } from "./TypeCallToAction";
 export type { TypeCard, TypeCardFields, TypeCardSkeleton } from "./TypeCard";
 export type { TypeCardsWithForm, TypeCardsWithFormFields, TypeCardsWithFormSkeleton } from "./TypeCardsWithForm";
 export type { TypeFooter, TypeFooterFields, TypeFooterSkeleton } from "./TypeFooter";

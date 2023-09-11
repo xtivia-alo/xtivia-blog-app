@@ -2,7 +2,7 @@
 
 import { useEffect, useContext } from 'react';
 import NavigationMenu from './CtfNavigationMenu';
-import CtfSetOfCard from './CtfSetOfCard';
+import AddressCards from '../AddressCards';
 import ImageWithFocalPoint from './CtfImageWithFocalPoint';
 import { TypeHeaderFields, TypeCardSkeleton } from '@/lib/generated-types';
 import { EntryFieldTypes } from 'contentful';
@@ -58,7 +58,7 @@ export default function CtfHeader({ entry }: { entry: TypeHeaderFields }) {
               <ImageWithFocalPoint entry={(logo as any).fields} />
             </div>
             <ul className='w-full flex flex-row space-between flex-wrap justify-center lg:justify-end'>
-              <CtfSetOfCard
+              <AddressCards
                 entry={
                   setOfCards as EntryFieldTypes.Array<
                     EntryFieldTypes.EntryLink<TypeCardSkeleton>

@@ -7,7 +7,7 @@ interface ICustomIconProps {
 }
 
 export default function CustomIcon(props: ICustomIconProps) {
-  const { path, width, height } = props;
+  const { path, width, height, color } = props;
   return (
     <>
       {path && (
@@ -15,6 +15,7 @@ export default function CustomIcon(props: ICustomIconProps) {
           width={width ? width : 12}
           height={height ? height : 12}
           icon={path}
+          color={color}
         />
       )}
     </>

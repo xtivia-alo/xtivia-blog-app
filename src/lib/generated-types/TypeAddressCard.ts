@@ -2,11 +2,10 @@ import type { ChainModifiers, Entry, EntryFieldTypes, EntrySkeletonType, LocaleC
 import type { TypeIconSkeleton } from "./TypeIcon";
 import type { TypeImageWithFocalPointSkeleton } from "./TypeImageWithFocalPoint";
 
-export interface TypeCardFields {
+export interface TypeAddressCardFields {
     internalName: EntryFieldTypes.Symbol;
     title: EntryFieldTypes.Symbol;
     titleSize: EntryFieldTypes.Symbol<"h1" | "h2" | "h3" | "h4" | "h5" | "h6">;
-    textAlignment: EntryFieldTypes.Symbol<"Center" | "Justify" | "Left" | "Right">;
     subText: EntryFieldTypes.Symbol;
     image?: EntryFieldTypes.EntryLink<TypeImageWithFocalPointSkeleton>;
     materialDesignIcon?: EntryFieldTypes.EntryLink<TypeIconSkeleton>;
@@ -16,5 +15,5 @@ export interface TypeCardFields {
     imagePosition?: EntryFieldTypes.Symbol<"Bottom" | "Left" | "Right" | "Top">;
 }
 
-export type TypeCardSkeleton = EntrySkeletonType<TypeCardFields, "card">;
-export type TypeCard<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeCardSkeleton, Modifiers, Locales>;
+export type TypeAddressCardSkeleton = EntrySkeletonType<TypeAddressCardFields, "addressCard">;
+export type TypeAddressCard<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeAddressCardSkeleton, Modifiers, Locales>;
