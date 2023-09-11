@@ -37,11 +37,11 @@ export default function CtfCard({ entry, address }: ICardProps) {
         imagePosition?.toString() === 'Bottom'
           ? 'flex-col'
           : 'flex-row'
-      } items-center ${address && 'md:flex-row'} xl:max-w-[250px] mx-6 my-2`}
+      } items-center ${address && 'md:flex-row'} xl:max-w-[250px] mx-10 my-2`}
     >
       <CtfIcon entry={iconEntry} />
       <div
-        className={`flex flex-col justify-center ml-2 ${
+        className={`flex flex-col justify-center ${
           textAlignment.toString() === 'Left'
             ? 'text-left'
             : textAlignment.toString() === 'Right'

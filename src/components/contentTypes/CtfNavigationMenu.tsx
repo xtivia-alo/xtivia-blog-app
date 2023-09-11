@@ -2,14 +2,13 @@ import { useContext } from 'react';
 import CtfImageWithFocalPoint from './CtfImageWithFocalPoint';
 import CtfNavigationItem from './CtfNavigationItem';
 import { EntryFieldTypes } from 'contentful';
-import Icon from '@mdi/react';
-import { mdiMenu, mdiDotsVertical } from '@mdi/js';
 import {
   TypeImageWithFocalPointFields,
   TypeNavigationMenuFields,
   TypeNavigationItemSkeleton,
 } from '@/lib/generated-types';
 import { AppContext, AppContextType } from '@/providers/AppContextProvider';
+import CustomIcon from '../CustomIcon';
 
 interface INavMenuProps {
   maxWidth: EntryFieldTypes.Integer;
@@ -78,15 +77,15 @@ function MobileNavbar({ maxWidth, entry, logoEntry }: INavMenuProps) {
         className='flex flex-row items-center justify-between border-b'
       >
         <div className='flex flex-row'>
-          <button onClick={toggleSidebar}>
-            <Icon path={mdiMenu} size={1.25} className='m-2' />
+          <button className='px-2' onClick={toggleSidebar}>
+            <CustomIcon width={32} height={32} path='mdi:hamburger-menu' />
           </button>
           <div className='flex items-center'>
             <CtfImageWithFocalPoint entry={logoEntry} />
           </div>
         </div>
-        <button onClick={toggleOfficeDetails}>
-          <Icon path={mdiDotsVertical} size={1.25} className='m-2' />
+        <button className='px-2' onClick={toggleOfficeDetails}>
+          <CustomIcon width={32} height={32} path='mdi:dots-vertical' />
         </button>
       </nav>
       {showSidebar && (

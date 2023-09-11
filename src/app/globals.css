@@ -22,7 +22,7 @@
     @apply font-bold text-base lg:text-base tracking-tighter;
   }
   p {
-    @apply leading-8 text-sm md:text-sm;
+    @apply leading-5 text-sm md:text-sm;
   }
   a {
     @apply cursor-pointer inline-flex;
@@ -31,13 +31,13 @@
     @apply not-italic;
   }
   .primary-btn {
-    @apply box-border text-white hover:text-picton-blue border border-picton-blue hover:border-white bg-picton-blue hover:bg-white font-bold rounded-sm text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none;
+    @apply box-border text-white hover:text-picton-blue border border-picton-blue hover:border-white bg-picton-blue hover:bg-white font-bold rounded-sm text-sm px-5 py-2.5 mr-2 focus:outline-none;
   }
   .secondary-btn {
-    @apply box-border text-black hover:text-white border border-black hover:border-picton-blue hover:bg-picton-blue font-bold rounded-sm text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none;
+    @apply box-border text-black hover:text-white border border-black hover:border-picton-blue hover:bg-picton-blue font-bold rounded-sm text-sm px-5 py-2.5 mr-2 focus:outline-none;
   }
   .tertiary-btn {
-    @apply box-border text-white hover:text-picton-blue border border-white hover:border-white hover:bg-white font-bold rounded-sm text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none;
+    @apply box-border text-white hover:text-picton-blue border border-white hover:border-white hover:bg-white font-bold rounded-sm text-sm px-5 py-2.5 mr-2 focus:outline-none;
   }
 }
 

@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { TypeNavigationItemFields } from '@/lib/generated-types';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import Icon from '@mdi/react';
-import { mdiChevronDown } from '@mdi/js';
+import CustomIcon from '../CustomIcon';
 
 export interface INavMenuItemProps {
   entry: TypeNavigationItemFields;
@@ -39,7 +38,7 @@ function MobileNavigationItem({
         </Link>
         {children?.length > 0 && (
           <button onClick={handleClick} className='px-3'>
-            <Icon path={mdiChevronDown} size={1} />
+            <CustomIcon width={24} height={24} path='mdi:chevron-down' />
           </button>
         )}
       </div>
@@ -94,7 +93,7 @@ function DesktopNavigationItem({
                 isHovered ? 'group-hover:animate-half-rotate-cw' : 'false'
               }
             >
-              <Icon path={mdiChevronDown} size={1} />
+              <CustomIcon width={24} height={24} path='mdi:chevron-down' />
             </div>
           )}
         </Link>

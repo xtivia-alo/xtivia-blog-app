@@ -2,7 +2,7 @@ import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Link from 'next/link';
 
-export default function CtfHeroImage({
+export default function CtfBanner({
   entry,
   idx,
   currentIndex,
@@ -16,12 +16,14 @@ export default function CtfHeroImage({
     headlineSize,
     subText,
     textColor,
-    image,
+    backgroundImage,
     actions,
     actionAlignment,
     contentMaxWidth,
     maxWidth,
   } = entry;
+
+  console.log(entry);
 
   const HeaderTag = headlineSize as any;
 
@@ -37,21 +39,26 @@ export default function CtfHeroImage({
         style={{
           maxWidth: ` ${maxWidth}px`,
           backgroundImage: `url(https:${
-            (image as any).fields.image.fields.file.url
+            (backgroundImage as any).fields.image.fields.file.url
           })`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'auto',
         }}
-        className={`px-4 lg:px-0 h-full w-full ${
+        className={`text-center px-8 py-20 lg:px-0 h-full w-full ${
           idx !== currentIndex && 'hidden'
         }`}
       >
         <div
           style={{ maxWidth: `${contentMaxWidth}px`, color: textColor.value }}
-          className='h-full flex flex-col items-left justify-center gap-4 m-auto'
+          className='h-full flex flex-col lg:flex-row lg:gap-4 lg:items-center justify-center m-auto'
         >
           <HeaderTag>{headline}</HeaderTag>
-          {documentToReactComponents(subText, options)}
+          <div className='flex flex-row justify-center w-full lg:w-0 lg:w-content'>
+            <hr className='w-1/4 lg:w-0 border-white'></hr>
+          </div>
+          <div className='my-6'>
+            {documentToReactComponents(subText, options)}
+          </div>
           <div
             className={`flex ${
               actionAlignment === 'Horizontal'
