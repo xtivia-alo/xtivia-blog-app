@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { TypeNavigationItemFields } from '@/lib/generated-types';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import Icon from '@mdi/react';
 import { mdiChevronDown } from '@mdi/js';
-import { usePathname } from 'next/navigation';
 
-interface INavMenuItemProps {
+export interface INavMenuItemProps {
   entry: TypeNavigationItemFields;
   rootPath?: string;
-  type: 'Mobile' | 'Desktop';
+  type?: 'Mobile' | 'Desktop';
 }
 
 function MobileNavigationItem({
@@ -48,7 +48,7 @@ function MobileNavigationItem({
           {children.map((ele: any, idx: any) => {
             return (
               <li className='ml-2' key={idx}>
-                <NavigationItem
+                <CtfNavigationItem
                   entry={ele.fields}
                   type={type}
                   rootPath={linkRoute}
@@ -72,46 +72,56 @@ function DesktopNavigationItem({
   const currentPath = usePathname();
   const linkRoute = `${rootPath}${slug === 'home' ? '' : slug}/`;
 
+  const [isHovered, setIsHovered] = useState(false);
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
+
   return (
-    <div className='group relative flex items-center'>
-      <Link
-        className={`py-4 pl-4 hover:text-picton-blue ${
-          currentPath === linkRoute && 'text-picton-blue'
-        }`}
-        href={linkRoute}
-      >
-        <span className='block m-auto'>{label}</span>
+    <>
+      <div className='group relative flex items-center'>
+        <Link
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          className={`py-4 pl-4 hover:text-picton-blue ${
+            currentPath === linkRoute && 'text-picton-blue'
+          }`}
+          href={linkRoute}
+        >
+          <span className='block m-auto'>{label}</span>
+          {children?.length > 0 && (
+            <div
+              className={
+                isHovered ? 'group-hover:animate-half-rotate-cw' : 'false'
+              }
+            >
+              <Icon path={mdiChevronDown} size={1} />
+            </div>
+          )}
+        </Link>
         {children?.length > 0 && (
-          <Icon
-            className='group-hover:animate-half-rotate-cc'
-            path={mdiChevronDown}
-            size={1}
-          />
+          <ul className='flex flex-col absolute top-14 bg-white text-gray-500 font-normal z-1 w-[220px] hidden group-hover:block'>
+            {children?.map((ele: any, idx: any) => {
+              return (
+                <li
+                  key={idx}
+                  className='border-l border-r border-t last-of-type:border-b border-gray-200'
+                >
+                  <CtfNavigationItem
+                    entry={ele.fields}
+                    type={type}
+                    rootPath={linkRoute}
+                  />
+                </li>
+              );
+            })}
+          </ul>
         )}
-      </Link>
-      {children?.length > 0 && (
-        <ul className='flex flex-col absolute top-14 bg-white text-gray-500 font-normal z-1 w-[220px] hidden group-hover:block'>
-          {children.map((ele: any, idx: any) => {
-            return (
-              <li
-                key={idx}
-                className='border-l border-r border-t last-of-type:border-b border-gray-200'
-              >
-                <NavigationItem
-                  entry={ele.fields}
-                  type={type}
-                  rootPath={linkRoute}
-                />
-              </li>
-            );
-          })}
-        </ul>
-      )}
-    </div>
+      </div>
+    </>
   );
 }
 
-export default function NavigationItem({ entry, type }: INavMenuItemProps) {
+export default function CtfNavigationItem({ entry, type }: INavMenuItemProps) {
   if (type === 'Mobile') {
     return <MobileNavigationItem entry={entry} type={type} />;
   } else {

@@ -1,8 +1,8 @@
-import Card from './Card';
+import CtfCard from './CtfCard';
 import { TypeCardFields, TypeCardSkeleton } from '@/lib/generated-types';
 import { EntryFieldTypes } from 'contentful';
 
-export default function SetOfCard({
+export default function CtfSetOfCard({
   entry,
 }: {
   entry: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeCardSkeleton>>;
@@ -15,7 +15,7 @@ export default function SetOfCard({
     <>
       {(entry as ICards).length > 0 &&
         (entry as ICards)?.map((ele, idx) => {
-          return <Card key={idx} entry={ele.fields as TypeCardFields} />;
+          return <CtfCard key={idx} entry={ele.fields as TypeCardFields} />;
         })}
     </>
   );

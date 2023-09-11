@@ -3,13 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-bold;
+  h1 {
+    @apply font-bold text-4xl lg:text-5xl tracking-tighter;
   }
   h2 {
     @apply text-3xl lg:text-4xl mb-5;
@@ -20,6 +15,7 @@
   h5,
   h6 {
     @apply text-base uppercase mb-2;
+    @apply font-bold;
   }
   p {
     @apply leading-8 text-sm md:text-base;
@@ -30,15 +26,14 @@
   address {
     @apply not-italic;
   }
-
-  .link-primary {
-    @apply hover:text-primary-normal;
+  .primary-btn {
+    @apply box-border text-white hover:text-picton-blue border border-picton-blue hover:border-white bg-picton-blue hover:bg-white font-bold rounded-sm text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none;
   }
-  .link-secondary {
-    @apply text-orange underline;
+  .secondary-btn {
+    @apply box-border text-black hover:text-white border border-black hover:border-picton-blue hover:bg-picton-blue font-bold rounded-sm text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none;
   }
-  .link-tertiary {
-    @apply text-primary-normal;
+  .tertiary-btn {
+    @apply box-border text-white hover:text-picton-blue border border-white hover:border-white hover:bg-white font-bold rounded-sm text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none;
   }
 }
 

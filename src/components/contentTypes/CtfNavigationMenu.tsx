@@ -1,5 +1,6 @@
 import { useContext } from 'react';
-import NavigationItem from './NavigationItem';
+import CtfImageWithFocalPoint from './CtfImageWithFocalPoint';
+import CtfNavigationItem from './CtfNavigationItem';
 import { EntryFieldTypes } from 'contentful';
 import Icon from '@mdi/react';
 import { mdiMenu, mdiDotsVertical } from '@mdi/js';
@@ -8,7 +9,6 @@ import {
   TypeNavigationMenuFields,
   TypeNavigationItemSkeleton,
 } from '@/lib/generated-types';
-import ImageWithFocalPoint from './ImageWithFocalPoint';
 import { AppContext, AppContextType } from '@/providers/AppContextProvider';
 
 interface INavMenuProps {
@@ -31,11 +31,11 @@ function DesktopNavbar({ maxWidth, entry }: INavMenuProps) {
       className='m-auto px-6 font-black'
     >
       {(entry.navigationItems as INavigationItems).length > 0 && (
-        <ul className='flex flex-row text-white gap-10 text-xs my-2'>
+        <ul className='flex flex-row text-white gap-10 text-xs'>
           {(entry.navigationItems as INavigationItems).map((ele, idx) => {
             return (
               <li key={idx} className='flex items-center'>
-                <NavigationItem entry={ele.fields} type='Desktop' />
+                <CtfNavigationItem entry={ele.fields} type='Desktop' />
               </li>
             );
           })}
@@ -82,7 +82,7 @@ function MobileNavbar({ maxWidth, entry, logoEntry }: INavMenuProps) {
             <Icon path={mdiMenu} size={1.25} className='m-2' />
           </button>
           <div className='flex items-center'>
-            <ImageWithFocalPoint entry={logoEntry} />
+            <CtfImageWithFocalPoint entry={logoEntry} />
           </div>
         </div>
         <button onClick={toggleOfficeDetails}>
@@ -100,7 +100,7 @@ function MobileNavbar({ maxWidth, entry, logoEntry }: INavMenuProps) {
                 {(entry.navigationItems as INavigationItems).map((ele, idx) => {
                   return (
                     <li key={idx} className='flex items-center'>
-                      <NavigationItem entry={ele.fields} type='Mobile' />
+                      <CtfNavigationItem entry={ele.fields} type='Mobile' />
                     </li>
                   );
                 })}

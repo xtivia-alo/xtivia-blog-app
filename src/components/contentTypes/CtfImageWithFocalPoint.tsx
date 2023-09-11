@@ -1,8 +1,8 @@
 import { TypeImageWithFocalPointFields } from '@/lib/generated-types';
 import Image from 'next/image';
-import { AssetDetails, EntryFieldTypes } from 'contentful';
+import { AssetDetails } from 'contentful';
 
-function ImageWithFocalPoint({
+export default function CtfImageWithFocalPoint({
   entry,
 }: {
   entry: TypeImageWithFocalPointFields;
@@ -19,5 +19,3 @@ function ImageWithFocalPoint({
     />
   );
 }
-
-export default ImageWithFocalPoint;

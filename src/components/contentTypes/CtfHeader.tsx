@@ -1,14 +1,14 @@
 'use client';
 
 import { useEffect, useContext } from 'react';
-import NavigationMenu from './NavigationMenu';
-import SetOfCard from './SetOfCard';
-import ImageWithFocalPoint from './ImageWithFocalPoint';
+import NavigationMenu from './CtfNavigationMenu';
+import CtfSetOfCard from './CtfSetOfCard';
+import ImageWithFocalPoint from './CtfImageWithFocalPoint';
 import { TypeHeaderFields, TypeCardSkeleton } from '@/lib/generated-types';
 import { EntryFieldTypes } from 'contentful';
 import { AppContext, AppContextType } from '@/providers/AppContextProvider';
 
-export default function Header({ entry }: { entry: TypeHeaderFields }) {
+export default function CtfHeader({ entry }: { entry: TypeHeaderFields }) {
   const { logo, setOfCards, navigationMenu, maxWidth } = entry;
 
   const {
@@ -58,7 +58,7 @@ export default function Header({ entry }: { entry: TypeHeaderFields }) {
               <ImageWithFocalPoint entry={(logo as any).fields} />
             </div>
             <ul className='w-full flex flex-row space-between flex-wrap justify-center lg:justify-end'>
-              <SetOfCard
+              <CtfSetOfCard
                 entry={
                   setOfCards as EntryFieldTypes.Array<
                     EntryFieldTypes.EntryLink<TypeCardSkeleton>
