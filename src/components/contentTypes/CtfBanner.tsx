@@ -4,12 +4,8 @@ import Link from 'next/link';
 
 export default function CtfBanner({
   entry,
-  idx,
-  currentIndex,
 }: {
   entry: { [key: string]: any };
-  idx: number;
-  currentIndex: number;
 }) {
   const {
     headline,
@@ -17,13 +13,11 @@ export default function CtfBanner({
     subText,
     textColor,
     backgroundImage,
+    darkenImage,
     actions,
-    actionAlignment,
     contentMaxWidth,
     maxWidth,
   } = entry;
-
-  console.log(entry);
 
   const HeaderTag = headlineSize as any;
 
@@ -45,7 +39,7 @@ export default function CtfBanner({
           backgroundSize: 'auto',
         }}
         className={`text-center px-8 py-20 lg:px-0 h-full w-full ${
-          idx !== currentIndex && 'hidden'
+          darkenImage && 'brightness-75'
         }`}
       >
         <div
@@ -53,19 +47,13 @@ export default function CtfBanner({
           className='h-full flex flex-col lg:flex-row lg:gap-4 lg:items-center justify-center m-auto'
         >
           <HeaderTag>{headline}</HeaderTag>
-          <div className='flex flex-row justify-center w-full lg:w-0 lg:w-content'>
-            <hr className='w-1/4 lg:w-0 border-white'></hr>
+          <div className='flex flex-row justify-center w-full lg:w-0 lg:h-[40px]'>
+            <hr className='w-1/4 lg:w-0 lg:h-full lg:border-l border-white'></hr>
           </div>
           <div className='my-6'>
             {documentToReactComponents(subText, options)}
           </div>
-          <div
-            className={`flex ${
-              actionAlignment === 'Horizontal'
-                ? 'flex-row gap-4'
-                : 'flex-col gap-2'
-            }`}
-          >
+          <div className='flex flex-row gap-4'>
             {actions.map((ele: any, idx: any) => {
               const { label, href, target, isExternal, displayStyle, theme } =
                 ele.fields;

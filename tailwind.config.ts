@@ -20,7 +20,7 @@ const config: Config = {
       },
       animation: {
         'half-rotate-cw': 'half-rotate-cw 0.5s ease-in-out both',
-        'half-rotate-ccw': 'half-rotate-ccw 0.5s ease-in-out',
+        'half-rotate-ccw': 'half-rotate-ccw 0.5s ease-in-out both',
       },
       colors: {
         'picton-blue': '#44bef1',

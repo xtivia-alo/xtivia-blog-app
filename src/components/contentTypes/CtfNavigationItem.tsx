@@ -90,7 +90,9 @@ function DesktopNavigationItem({
           {children?.length > 0 && (
             <div
               className={
-                isHovered ? 'group-hover:animate-half-rotate-cw' : 'false'
+                isHovered
+                  ? 'group-hover:animate-half-rotate-cw'
+                  : 'group-hover:animate-half-rotate-ccw'
               }
             >
               <CustomIcon width={24} height={24} path='mdi:chevron-down' />
@@ -98,7 +100,7 @@ function DesktopNavigationItem({
           )}
         </Link>
         {children?.length > 0 && (
-          <ul className='flex flex-col absolute top-14 bg-white text-gray-500 font-normal z-1 w-[220px] hidden group-hover:block'>
+          <ul className='hidden group-hover:flex flex-col absolute top-14 bg-white text-gray-500 font-normal z-10 w-[220px]'>
             {children?.map((ele: any, idx: any) => {
               return (
                 <li

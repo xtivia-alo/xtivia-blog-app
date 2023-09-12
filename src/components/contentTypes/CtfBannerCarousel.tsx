@@ -41,7 +41,7 @@ export default function CtfBannerCarousel({
 
   return (
     <div className='relative flex flex-row items-center h-[520px]'>
-      <div className='h-full absolute left-0 flex items-center hidden md:visible'>
+      <div className='h-full absolute left-0 items-center hidden md:flex'>
         <button
           onClick={handleDecrease}
           className='bg-gray-500 opacity-50 text-white'
@@ -49,7 +49,7 @@ export default function CtfBannerCarousel({
           <CustomIcon width={48} height={48} path='mdi:chevron-left' />
         </button>
       </div>
-      <div className='h-full absolute right-0 flex items-center hidden md:visible'>
+      <div className='h-full absolute right-0 items-center hidden md:flex'>
         <button
           onClick={handleIncrease}
           id='hero-carousel-up'

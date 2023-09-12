@@ -17,6 +17,7 @@ export default function CtfHeroImage({
     subText,
     textColor,
     image,
+    darkenImage,
     actions,
     actionAlignment,
     contentMaxWidth,
@@ -44,7 +45,7 @@ export default function CtfHeroImage({
         }}
         className={`px-4 lg:px-0 h-full w-full ${
           idx !== currentIndex && 'hidden'
-        }`}
+        } ${darkenImage && 'brightness-75'}`}
       >
         <div
           style={{ maxWidth: `${contentMaxWidth}px`, color: textColor.value }}
