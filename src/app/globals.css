@@ -30,6 +30,9 @@
   address {
     @apply not-italic;
   }
+  blockquote {
+    @apply italic text-gray-400;
+  }
   .primary-btn {
     @apply box-border text-white hover:text-picton-blue border border-picton-blue hover:border-white bg-picton-blue hover:bg-white font-bold rounded-sm text-sm px-5 py-2.5 mr-2 focus:outline-none;
   }

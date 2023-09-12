@@ -1,8 +1,10 @@
 import type { ChainModifiers, Entry, EntryFieldTypes, EntrySkeletonType, LocaleCode } from "contentful";
+import type { TypeImageWithFocalPointSkeleton } from "./TypeImageWithFocalPoint";
 
 export interface TypeTestimonialFields {
     internalName: EntryFieldTypes.Symbol;
     name: EntryFieldTypes.Symbol;
+    profileImage?: EntryFieldTypes.EntryLink<TypeImageWithFocalPointSkeleton>;
     title: EntryFieldTypes.Symbol;
     testimonial: EntryFieldTypes.RichText;
     product?: EntryFieldTypes.Symbol;

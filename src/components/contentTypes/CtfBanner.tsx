@@ -53,7 +53,7 @@ export default function CtfBanner({
           <div className='my-6'>
             {documentToReactComponents(subText, options)}
           </div>
-          <div className='flex flex-row gap-4'>
+          <div className='flex flex-row gap-4 justify-center'>
             {actions.map((ele: any, idx: any) => {
               const { label, href, target, isExternal, displayStyle, theme } =
                 ele.fields;

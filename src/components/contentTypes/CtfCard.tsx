@@ -37,7 +37,9 @@ export default function CtfCard({ entry, address }: ICardProps) {
         imagePosition?.toString() === 'Bottom'
           ? 'flex-col'
           : 'flex-row'
-      } items-center ${address && 'md:flex-row'} xl:max-w-[250px] mx-10 my-2`}
+      } items-center ${
+        address && 'md:flex-row gap-4'
+      } xl:max-w-[250px] mx-10 my-2`}
     >
       <CtfIcon entry={iconEntry} />
       <div
