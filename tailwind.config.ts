@@ -10,17 +10,17 @@ const config: Config = {
     extend: {
       keyframes: {
         'half-rotate-cw': {
-          '0%': { transform: 'rotate(0deg)' },
-          '100%': { transform: 'rotate(180deg)' },
+          from: { transform: 'rotate(0deg)' },
+          to: { transform: 'rotate(180deg)' },
         },
         'half-rotate-ccw': {
-          '0%': { transform: 'rotate(180deg)' },
-          '100%': { transform: 'rotate(0deg)' },
+          from: { transform: 'rotate(180deg)' },
+          to: { transform: 'rotate(0deg)' },
         },
       },
       animation: {
-        'half-rotate-cw': 'half-rotate-cw 0.5s ease-in-out both',
-        'half-rotate-ccw': 'half-rotate-ccw 0.5s ease-in-out both',
+        'half-rotate-cw': 'half-rotate-cw 0.2s ease-in-out both',
+        'half-rotate-ccw': 'half-rotate-ccw 0.2s ease-in-out both',
       },
       colors: {
         'picton-blue': '#44bef1',

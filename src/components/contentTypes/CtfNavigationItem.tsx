@@ -8,12 +8,14 @@ export interface INavMenuItemProps {
   entry: TypeNavigationItemFields;
   rootPath?: string;
   type?: 'Mobile' | 'Desktop';
+  idx?: number;
 }
 
 function MobileNavigationItem({
   entry,
   type,
   rootPath = '',
+  idx,
 }: INavMenuItemProps) {
   const { label, slug, children } = entry as any;
   const currentPath = usePathname();
@@ -48,6 +50,7 @@ function MobileNavigationItem({
             return (
               <li className='ml-2' key={idx}>
                 <CtfNavigationItem
+                  idx={idx}
                   entry={ele.fields}
                   type={type}
                   rootPath={linkRoute}
@@ -65,15 +68,28 @@ function DesktopNavigationItem({
   entry,
   type,
   rootPath = '',
+  idx,
 }: INavMenuItemProps) {
   const { label, slug, children } = entry as any;
 
   const currentPath = usePathname();
   const linkRoute = `${rootPath}${slug === 'home' ? '' : slug}/`;
 
-  const [isHovered, setIsHovered] = useState(false);
-  const handleMouseEnter = () => setIsHovered(true);
-  const handleMouseLeave = () => setIsHovered(false);
+  const handleMouseEnter = () => {
+    const element = document.getElementById(
+      `desktop-nav-dropdown-chevron-${idx}`
+    );
+    element?.classList.add('animate-half-rotate-cw');
+    element?.classList.remove('animate-half-rotate-ccw');
+  };
+
+  const handleMouseLeave = () => {
+    const element = document.getElementById(
+      `desktop-nav-dropdown-chevron-${idx}`
+    );
+    element?.classList.add('animate-half-rotate-ccw');
+    element?.classList.remove('animate-half-rotate-cw');
+  };
 
   return (
     <>
@@ -88,14 +104,13 @@ function DesktopNavigationItem({
         >
           <span className='block m-auto'>{label}</span>
           {children?.length > 0 && (
-            <div
-              className={
-                isHovered
-                  ? 'group-hover:animate-half-rotate-cw'
-                  : 'group-hover:animate-half-rotate-ccw'
-              }
-            >
-              <CustomIcon width={24} height={24} path='mdi:chevron-down' />
+            <div id={`desktop-nav-dropdown-chevron-${idx}`}>
+              <CustomIcon
+                color='#229dd1'
+                width={18}
+                height={18}
+                path='mdi:chevron-down'
+              />
             </div>
           )}
         </Link>
@@ -108,6 +123,7 @@ function DesktopNavigationItem({
                   className='border-l border-r border-t last-of-type:border-b border-gray-200'
                 >
                   <CtfNavigationItem
+                    idx={idx}
                     entry={ele.fields}
                     type={type}
                     rootPath={linkRoute}
@@ -122,10 +138,14 @@ function DesktopNavigationItem({
   );
 }
 
-export default function CtfNavigationItem({ entry, type }: INavMenuItemProps) {
+export default function CtfNavigationItem({
+  entry,
+  type,
+  idx,
+}: INavMenuItemProps) {
   if (type === 'Mobile') {
-    return <MobileNavigationItem entry={entry} type={type} />;
+    return <MobileNavigationItem idx={idx} entry={entry} type={type} />;
   } else {
-    return <DesktopNavigationItem entry={entry} type={type} />;
+    return <DesktopNavigationItem idx={idx} entry={entry} type={type} />;
   }
 }

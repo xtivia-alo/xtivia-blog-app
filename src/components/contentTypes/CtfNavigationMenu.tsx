@@ -34,7 +34,11 @@ function DesktopNavbar({ maxWidth, entry }: INavMenuProps) {
           {(entry.navigationItems as INavigationItems).map((ele, idx) => {
             return (
               <li key={idx} className='flex items-center'>
-                <CtfNavigationItem entry={ele.fields} type='Desktop' />
+                <CtfNavigationItem
+                  idx={idx}
+                  entry={ele.fields}
+                  type='Desktop'
+                />
               </li>
             );
           })}
