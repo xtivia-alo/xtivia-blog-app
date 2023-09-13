@@ -3,7 +3,7 @@
 import { useEffect, useContext } from 'react';
 import NavigationMenu from './CtfNavigationMenu';
 import AddressCards from '../AddressCards';
-import ImageWithFocalPoint from './CtfImageWithFocalPoint';
+import CtfImageWithFocalPoint from './CtfImageWithFocalPoint';
 import { TypeHeaderFields, TypeCardSkeleton } from '@/lib/generated-types';
 import { EntryFieldTypes } from 'contentful';
 import { AppContext, AppContextType } from '@/providers/AppContextProvider';
@@ -55,7 +55,7 @@ export default function CtfHeader({ entry }: { entry: TypeHeaderFields }) {
             className='flex flex-row space-between m-auto px-6 py-2'
           >
             <div className='items-center hidden lg:flex'>
-              <ImageWithFocalPoint entry={(logo as any).fields} />
+              <CtfImageWithFocalPoint entry={(logo as any).fields} />
             </div>
             <ul className='w-full flex flex-row space-between flex-wrap justify-center lg:justify-end'>
               <AddressCards

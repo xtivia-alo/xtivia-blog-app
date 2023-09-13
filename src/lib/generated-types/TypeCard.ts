@@ -4,7 +4,7 @@ import type { TypeImageWithFocalPointSkeleton } from "./TypeImageWithFocalPoint"
 
 export interface TypeCardFields {
     internalName: EntryFieldTypes.Symbol;
-    title: EntryFieldTypes.Symbol;
+    title?: EntryFieldTypes.Symbol;
     titleSize: EntryFieldTypes.Symbol<"h1" | "h2" | "h3" | "h4" | "h5" | "h6">;
     textAlignment: EntryFieldTypes.Symbol<"Center" | "Justify" | "Left" | "Right">;
     subText: EntryFieldTypes.Symbol;

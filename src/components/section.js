@@ -4,6 +4,8 @@ import CtfHeader from './contentTypes/CtfHeader';
 import CtfSetOfCard from './contentTypes/CtfSetOfCard';
 import CtfSetofTestimonials from './contentTypes/CtfSetofTestimonials';
 import CtfFooter from './contentTypes/CtfFooter';
+import CtfCard from './contentTypes/CtfCard';
+import CtfNavigationItem from './contentTypes/CtfNavigationItem';
 
 export default function Section({ sectionType, section, ArrayKey, sys }) {
   const renderSection = () => {

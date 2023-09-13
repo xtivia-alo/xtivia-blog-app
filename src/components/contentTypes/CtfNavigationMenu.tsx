@@ -71,7 +71,24 @@ function MobileNavbar({ maxWidth, entry, logoEntry }: INavMenuProps) {
     setShowOfficeDetails(!showOfficeDetails);
   }
 
+  const body = document.body;
+  const html = document.documentElement;
+  const height = Math.max(
+    body.scrollHeight,
+    body.offsetHeight,
+    html.clientHeight,
+    html.scrollHeight,
+    html.offsetHeight
+  );
+  console.log(height);
+
   const navHeight = document.getElementById('mobileNav')?.offsetHeight;
+  const windowHeight = window.innerHeight;
+
+  const maxHeight = Math.max(
+    height,
+    windowHeight - (navHeight ? navHeight : 0)
+  );
 
   return (
     <>
@@ -95,7 +112,7 @@ function MobileNavbar({ maxWidth, entry, logoEntry }: INavMenuProps) {
       {showSidebar && (
         <div className='flex flex-row'>
           <nav
-            style={{ height: `calc(100vh - ${navHeight}px)` }}
+            style={{ height: `${maxHeight}px` }}
             className='bg-white w-[270px] border-r border-grey-500'
           >
             {(entry.navigationItems as INavigationItems).length > 0 && (

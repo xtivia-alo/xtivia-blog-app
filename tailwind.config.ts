@@ -23,6 +23,7 @@ const config: Config = {
         'half-rotate-ccw': 'half-rotate-ccw 0.2s ease-in-out both',
       },
       colors: {
+        'outer-space': '#323946',
         'picton-blue': '#44bef1',
         'ball-blue': '#229dd1',
       },

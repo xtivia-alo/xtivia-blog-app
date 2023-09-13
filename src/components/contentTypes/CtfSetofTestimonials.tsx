@@ -30,44 +30,43 @@ export default function CtfSetofTestimonials(
     },
   };
 
-  const CustomRightArrow = ({ onClick: any, ...rest }) => {
-    const {
-      onMove,
-      carouselState: { currentSlide, deviceType },
-    } = rest;
-    // onMove means if dragging or swiping in progress.
-    return;
-  };
-
   return (
     <>
       <div
         style={{
           maxWidth: ` ${maxWidth}px`,
         }}
-        className='py-16 px-12 lg:px-28 xl:px-72 2xl:px-[28rem]'
+        className='py-16 px-12 lg:px-22 xl:px-52 2xl:px-[20rem]'
       >
+        {title && (
+          <>
+            <HeaderTag className='text-center'>{title}</HeaderTag>
+            <div className='flex justify-center mb-8'>
+              <hr className='w-[40px] border-b-2 border-picton-blue' />
+            </div>
+          </>
+        )}
         <Carousel
-          customLeftArrow={
-            <div className='absolute z-50 left-0'>
-              <CustomIcon
-                color='#bab8b8'
-                width={48}
-                height={48}
-                path='mdi:chevron-left'
-              />
-            </div>
-          }
-          customRightArrow={
-            <div className='absolute z-50 right-0'>
-              <CustomIcon
-                color='#bab8b8'
-                width={48}
-                height={48}
-                path='mdi:chevron-right'
-              />
-            </div>
-          }
+          // customLeftArrow={
+          //   <div className='absolute z-50 left-0'>
+          //     <CustomIcon
+          //       color='#bab8b8'
+          //       width={48}
+          //       height={48}
+          //       path='mdi:chevron-left'
+          //     />
+          //   </div>
+          // }
+          // customRightArrow={
+          //   <div className='absolute z-50 right-0'>
+          //     <CustomIcon
+          //       color='#bab8b8'
+          //       width={48}
+          //       height={48}
+          //       path='mdi:chevron-right'
+          //     />
+          //   </div>
+          // }
           draggable={true}
           responsive={responsive}
           infinite={true}

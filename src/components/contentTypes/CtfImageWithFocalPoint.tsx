@@ -7,7 +7,7 @@ export default function CtfImageWithFocalPoint({
   rounded = false,
 }: {
   entry: TypeImageWithFocalPointFields;
-  rounded: boolean;
+  rounded?: boolean;
 }) {
   const logoImageEntry = (entry.image as any).fields;
   const logoDimensions = logoImageEntry?.file?.details as AssetDetails;

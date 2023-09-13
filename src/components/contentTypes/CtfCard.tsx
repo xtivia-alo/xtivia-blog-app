@@ -1,6 +1,7 @@
 import CtfIcon from './CtfIcon';
 import { TypeCardFields } from '@/lib/generated-types';
 import { JsonObject } from 'type-fest';
+import CtfImageWithFocalPoint from './CtfImageWithFocalPoint';
 interface ICardProps {
   address?: boolean;
   entry: TypeCardFields;
@@ -12,13 +13,14 @@ export default function CtfCard({ entry, address }: ICardProps) {
     titleSize,
     subText,
     materialDesignIcon,
+    image,
     iconSize,
     iconColor,
     imagePosition,
     textAlignment,
   } = entry;
 
-  const iconFields = (materialDesignIcon as any).fields;
+  const iconFields = materialDesignIcon && (materialDesignIcon as any).fields;
   const iconColorFields = iconColor as JsonObject;
 
   const iconEntry = {
@@ -37,11 +39,10 @@ export default function CtfCard({ entry, address }: ICardProps) {
         imagePosition?.toString() === 'Bottom'
           ? 'flex-col'
           : 'flex-row'
-      } items-center ${
-        address && 'md:flex-row gap-4'
-      } xl:max-w-[250px] mx-10 my-2`}
+      } items-center ${address && 'md:flex-row gap-4'} xl:max-w-[250px] my-2`}
     >
-      <CtfIcon entry={iconEntry} />
+      {image && <CtfImageWithFocalPoint entry={(image as any).fields} />}
+      <div className='mx-2'>{iconEntry && <CtfIcon entry={iconEntry} />}</div>
       <div
         className={`flex flex-col justify-center ${
           textAlignment.toString() === 'Left'
@@ -55,7 +56,7 @@ export default function CtfCard({ entry, address }: ICardProps) {
             : 'text-left'
         }`}
       >
-        <HeaderTag>{title.toString()}</HeaderTag>
+        {title && <HeaderTag>{title.toString()}</HeaderTag>}
         <p className='text-gray-500'>{subText.toString()}</p>
       </div>
     </li>

@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { TypeNavigationItemFields } from '@/lib/generated-types';
 import Link from 'next/link';
@@ -7,7 +9,7 @@ import CustomIcon from '../CustomIcon';
 export interface INavMenuItemProps {
   entry: TypeNavigationItemFields;
   rootPath?: string;
-  type?: 'Mobile' | 'Desktop';
+  type: 'Mobile' | 'Desktop' | 'Footer';
   idx?: number;
 }
 
@@ -115,7 +117,7 @@ function DesktopNavigationItem({
           )}
         </Link>
         {children?.length > 0 && (
-          <ul className='hidden group-hover:flex flex-col absolute top-14 bg-white text-gray-500 font-normal z-10 w-[220px]'>
+          <ul className='hidden group-hover:flex flex-col absolute top-12 bg-white text-gray-500 font-normal z-10 w-[220px]'>
             {children?.map((ele: any, idx: any) => {
               return (
                 <li
@@ -138,6 +140,27 @@ function DesktopNavigationItem({
   );
 }
 
+function FooterNavigationItem({
+  entry,
+  type,
+  rootPath = '',
+  idx,
+}: INavMenuItemProps) {
+  const { label, slug } = entry as any;
+
+  const linkRoute = `${rootPath}${slug === 'home' ? '' : slug}/`;
+
+  return (
+    <>
+      <div>
+        <Link className='hover:text-picton-blue' href={linkRoute}>
+          <span className='block m-auto'>{label}</span>
+        </Link>
+      </div>
+    </>
+  );
+}
+
 export default function CtfNavigationItem({
   entry,
   type,
@@ -145,7 +168,11 @@ export default function CtfNavigationItem({
 }: INavMenuItemProps) {
   if (type === 'Mobile') {
     return <MobileNavigationItem idx={idx} entry={entry} type={type} />;
-  } else {
+  } else if (type === 'Desktop') {
     return <DesktopNavigationItem idx={idx} entry={entry} type={type} />;
+  } else if (type === 'Footer') {
+    return <FooterNavigationItem idx={idx} entry={entry} type={type} />;
+  } else {
+    return null;
   }
 }
