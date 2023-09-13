@@ -39,7 +39,7 @@ export default function CtfHeader({ entry }: { entry: TypeHeaderFields }) {
   }, []);
 
   return (
-    <header className='bg-white w-full absolute top-0 left-0 z-50 lg:static'>
+    <header className='w-full absolute top-0 left-0 z-50 lg:static'>
       {!isDesktop && (
         <NavigationMenu
           maxWidth={maxWidth}

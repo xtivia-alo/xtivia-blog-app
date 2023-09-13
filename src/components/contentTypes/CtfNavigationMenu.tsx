@@ -80,13 +80,13 @@ function MobileNavbar({ maxWidth, entry, logoEntry }: INavMenuProps) {
     html.scrollHeight,
     html.offsetHeight
   );
-  console.log(height);
 
   const navHeight = document.getElementById('mobileNav')?.offsetHeight;
   const windowHeight = window.innerHeight;
 
+  // calc maxHeight of document scroll height, or height of the window (so that the sidebar is sized correctly)
   const maxHeight = Math.max(
-    height,
+    height - (navHeight ? navHeight : 0),
     windowHeight - (navHeight ? navHeight : 0)
   );
 
@@ -129,7 +129,7 @@ function MobileNavbar({ maxWidth, entry, logoEntry }: INavMenuProps) {
           </nav>
           {/* overlay to click out of sidebar */}
           <div
-            className='bg-gray-100 opacity-20 grow'
+            className='bg-gray-500 opacity-10 grow'
             onClick={toggleSidebar}
           ></div>
         </div>

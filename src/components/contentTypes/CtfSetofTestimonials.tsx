@@ -30,6 +30,34 @@ export default function CtfSetofTestimonials(
     },
   };
 
+  const LeftArrow = (props: any) => {
+    const { carouselState, children, ...rest } = props;
+    return (
+      <div className='absolute left-0'>
+        <CustomIcon
+          color='#bab8b8'
+          width={48}
+          height={48}
+          path='mdi:chevron-left'
+        />
+      </div>
+    );
+  };
+
+  const RightArrow = (props: any) => {
+    const { carouselState, children, ...rest } = props;
+    return (
+      <div className='absolute right-0'>
+        <CustomIcon
+          color='#bab8b8'
+          width={48}
+          height={48}
+          path='mdi:chevron-right'
+        />
+      </div>
+    );
+  };
+
   return (
     <>
       <div
@@ -47,26 +75,8 @@ export default function CtfSetofTestimonials(
           </>
         )}
         <Carousel
-          // customLeftArrow={
-          //   <div className='absolute z-50 left-0'>
-          //     <CustomIcon
-          //       color='#bab8b8'
-          //       width={48}
-          //       height={48}
-          //       path='mdi:chevron-left'
-          //     />
-          //   </div>
-          // }
-          // customRightArrow={
-          //   <div className='absolute z-50 right-0'>
-          //     <CustomIcon
-          //       color='#bab8b8'
-          //       width={48}
-          //       height={48}
-          //       path='mdi:chevron-right'
-          //     />
-          //   </div>
-          // }
+          customLeftArrow={<LeftArrow />}
+          customRightArrow={<RightArrow />}
           draggable={true}
           responsive={responsive}
           infinite={true}
