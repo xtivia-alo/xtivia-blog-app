@@ -84,30 +84,32 @@ export default function CtfBanner({
                 <div className='ml-4' key={idx}>
                   {displayStyle === 'Link' ? (
                     <Link
-                      className={
-                        theme === 'primary'
-                          ? 'primary-btn'
-                          : theme === 'secondary'
-                          ? 'secondary-btn'
-                          : theme === 'tertiary'
-                          ? 'tertiary-btn'
-                          : 'image-btn'
-                      }
+                      className={`min-w-[160px]
+                    ${
+                      theme === 'primary'
+                        ? 'primary-btn'
+                        : theme === 'secondary'
+                        ? 'secondary-btn'
+                        : theme === 'tertiary'
+                        ? 'tertiary-btn'
+                        : 'image-btn'
+                    }`}
                       href={href ? href : '/'}
                     >
                       {label}
                     </Link>
                   ) : (
                     <button
-                      className={
-                        theme === 'primary'
-                          ? 'primary-btn'
-                          : theme === 'secondary'
-                          ? 'secondary-btn'
-                          : theme === 'tertiary'
-                          ? 'tertiary-btn'
-                          : 'image-btn'
-                      }
+                      className={`min-w-[160px]
+                    ${
+                      theme === 'primary'
+                        ? 'primary-btn'
+                        : theme === 'secondary'
+                        ? 'secondary-btn'
+                        : theme === 'tertiary'
+                        ? 'tertiary-btn'
+                        : 'image-btn'
+                    }`}
                       onClick={handleClick}
                     >
                       {label}
