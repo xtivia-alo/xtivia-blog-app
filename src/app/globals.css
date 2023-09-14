@@ -10,7 +10,7 @@
     @apply font-black text-h1 md:text-h1-md xl:text-h1-lg;
   }
   h2 {
-    @apply font-bold text-h2 md:text-h2-md lg:text-h2-lg;
+    @apply font-black text-h2 md:text-h2-md lg:text-h2-lg;
   }
   h3 {
     @apply font-bold text-h3 md:text-h3-md lg:text-h3-lg;
@@ -47,6 +47,9 @@
   }
   .tertiary-btn {
     @apply box-border justify-center text-white hover:text-picton-blue border border-white hover:border-white hover:bg-white font-bold rounded-sm py-2.5 focus:outline-none;
+  }
+  .grid-shell {
+    @apply min-w-[300px] max-w-[480px] md:max-w-[750px] lg:max-w-[970px] xl:max-w-[1200px];
   }
 }
 

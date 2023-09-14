@@ -12,6 +12,7 @@ export interface TypeCardFields {
     materialDesignIcon?: EntryFieldTypes.EntryLink<TypeIconSkeleton>;
     customIcon?: EntryFieldTypes.AssetLink;
     iconSize?: EntryFieldTypes.Integer;
+    iconBorder?: EntryFieldTypes.Boolean;
     iconColor?: EntryFieldTypes.Object;
     imagePosition?: EntryFieldTypes.Symbol<"Bottom" | "Left" | "Right" | "Top">;
 }

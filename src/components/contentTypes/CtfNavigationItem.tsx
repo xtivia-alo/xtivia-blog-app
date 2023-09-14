@@ -117,12 +117,12 @@ function DesktopNavigationItem({
           )}
         </Link>
         {children?.length > 0 && (
-          <ul className='hidden group-hover:flex flex-col absolute top-12 bg-white text-gray-500 font-normal z-10 w-[220px]'>
+          <ul className='hidden group-hover:flex flex-col absolute top-10 left-[-22px] bg-white text-gray-500 font-normal z-10 w-[220px]'>
             {children?.map((ele: any, idx: any) => {
               return (
                 <li
                   key={idx}
-                  className='border-l border-r border-t last-of-type:border-b border-gray-200'
+                  className='border-l border-r border-t last-of-type:border-b border-gray-200 px-5 py-3'
                 >
                   <CtfNavigationItem
                     idx={idx}

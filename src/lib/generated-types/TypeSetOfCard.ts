@@ -8,7 +8,7 @@ export interface TypeSetOfCardFields {
     subText?: EntryFieldTypes.RichText;
     cards: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeCardSkeleton>>;
     cardDisplayStyle: EntryFieldTypes.Symbol<"Horizontal" | "Vertical">;
-    cardsInARow?: EntryFieldTypes.Integer;
+    cardsInARow?: EntryFieldTypes.Integer<3 | 4>;
     maxWidth?: EntryFieldTypes.Integer;
 }
 

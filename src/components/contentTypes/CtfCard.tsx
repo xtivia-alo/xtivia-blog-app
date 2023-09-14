@@ -2,9 +2,47 @@ import CtfIcon from './CtfIcon';
 import { TypeCardFields } from '@/lib/generated-types';
 import { JsonObject } from 'type-fest';
 import CtfImageWithFocalPoint from './CtfImageWithFocalPoint';
+import { ReactNode } from 'react';
+import { EntryFieldTypes } from 'contentful';
+
 interface ICardProps {
   address?: boolean;
   entry: TypeCardFields;
+}
+
+function BorderContainer({
+  children,
+  hasBorder,
+}: {
+  children: ReactNode;
+  hasBorder: EntryFieldTypes.Boolean | undefined;
+}) {
+  const borderStyle =
+    'before:w-[17px] before:h-[17px] before:border-picton-blue before:absolute after:w-[17px] after:h-[17px] after:border-picton-blue after:absolute';
+  const borderTopLeftStyle =
+    'before:top-0 before:left-0 before:border-t-2 before:border-l-2';
+  const borderTopRightStyle =
+    'after:top-0 after:right-0 after:border-t-2 after:border-r-2';
+  const borderBottomLeftStyle =
+    'before:bottom-0 before:left-0 before:border-b-2 before:border-l-2';
+  const borderBottomRightStyle =
+    'after:bottom-0 after:right-0 after:border-b-2 after:border-r-2';
+
+  if (hasBorder) {
+    return (
+      <div
+        className={`p-3 relative ${borderStyle} ${borderTopLeftStyle} ${borderTopRightStyle}`}
+      >
+        <span
+          className={`p-2.5 ${borderStyle} ${borderBottomLeftStyle} ${borderBottomRightStyle}`}
+        >
+          {children}
+        </span>
+      </div>
+    );
+  } else {
+    return <>{children}</>;
+  }
 }
 
 export default function CtfCard({ entry, address }: ICardProps) {
@@ -15,6 +53,7 @@ export default function CtfCard({ entry, address }: ICardProps) {
     materialDesignIcon,
     image,
     iconSize,
+    iconBorder,
     iconColor,
     imagePosition,
     textAlignment,
@@ -39,10 +78,20 @@ export default function CtfCard({ entry, address }: ICardProps) {
         imagePosition?.toString() === 'Bottom'
           ? 'flex-col'
           : 'flex-row'
-      } items-center ${address && 'md:flex-row'} xl:max-w-[250px] my-2`}
+      } items-center ${address && 'md:flex-row'} ${
+        !address && `px-5 py-6 mx-5`
+      }`}
     >
-      {image && <CtfImageWithFocalPoint entry={(image as any).fields} />}
-      <div className='mx-2'>{iconEntry && <CtfIcon entry={iconEntry} />}</div>
+      {image && (
+        <BorderContainer hasBorder={iconBorder}>
+          <CtfImageWithFocalPoint entry={(image as any).fields} />
+        </BorderContainer>
+      )}
+      {iconEntry && (
+        <BorderContainer hasBorder={iconBorder}>
+          <CtfIcon entry={iconEntry} />
+        </BorderContainer>
+      )}
       <div
         className={`flex flex-col justify-center ${
           textAlignment.toString() === 'Left'
@@ -60,12 +109,12 @@ export default function CtfCard({ entry, address }: ICardProps) {
           (address ? (
             <span className='font-bold text-black'>{title.toString()}</span>
           ) : (
-            <HeaderTag>{title.toString()}</HeaderTag>
+            <HeaderTag className='mt-5'>{title.toString()}</HeaderTag>
           ))}
         {address ? (
           <span className='text-gray-500'>{subText.toString()}</span>
         ) : (
-          <p className='text-gray-500'>{subText.toString()}</p>
+          <p className='text-gray-500 mt-5'>{subText.toString()}</p>
         )}
       </div>
     </li>
