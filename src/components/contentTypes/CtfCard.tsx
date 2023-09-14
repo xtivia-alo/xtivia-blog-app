@@ -6,7 +6,7 @@ import { ReactNode } from 'react';
 import { EntryFieldTypes } from 'contentful';
 
 interface ICardProps {
-  address?: boolean;
+  type?: 'address' | 'address-footer' | 'main';
   entry: TypeCardFields;
 }
 
@@ -45,7 +45,7 @@ function BorderContainer({
   }
 }
 
-export default function CtfCard({ entry, address = false }: ICardProps) {
+export default function CtfCard({ entry, type = 'main' }: ICardProps) {
   const {
     title,
     titleSize,
@@ -78,8 +78,8 @@ export default function CtfCard({ entry, address = false }: ICardProps) {
         imagePosition?.toString() === 'Bottom'
           ? 'flex-col'
           : 'flex-row'
-      } items-center ${address && 'md:flex-row'} ${
-        !address && `px-5 py-6 mx-5`
+      } items-center ${type !== 'main' && 'md:flex-row'} ${
+        type === 'main' && `px-5 py-6 mx-5`
       }`}
     >
       {image && (
@@ -103,18 +103,18 @@ export default function CtfCard({ entry, address = false }: ICardProps) {
             : textAlignment.toString() === 'Justify'
             ? 'text-justify'
             : 'text-left'
-        } ${address && 'pt-3.5 md:pl-3.5 md:pt-0 md:text-left'}`}
+        } ${type === 'address' && 'pt-3.5 md:pl-3.5 md:pt-0 md:text-left'}`}
       >
         {title &&
-          (address ? (
-            <span className='font-bold text-black'>{title.toString()}</span>
-          ) : (
+          (type === 'main' ? (
             <HeaderTag className='mt-5'>{title.toString()}</HeaderTag>
+          ) : (
+            <span className='font-bold text-black'>{title.toString()}</span>
           ))}
-        {address ? (
-          <span className='text-gray-500'>{subText.toString()}</span>
-        ) : (
+        {type === 'main' ? (
           <p className='text-gray-500 mt-5'>{subText.toString()}</p>
+        ) : (
+          <span className='text-gray-500'>{subText.toString()}</span>
         )}
       </div>
     </li>

@@ -60,7 +60,6 @@ function MobileNavbar({ contentMaxWidth, entry, logoEntry }: INavMenuProps) {
 
   useEffect(() => {
     const initialHeight = document.getElementById('mobileNav')?.offsetHeight;
-    console.log(initialHeight);
     setMobileNavHeight(initialHeight ? (initialHeight as number) : 0);
   }, []);
 

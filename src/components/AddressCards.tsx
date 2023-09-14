@@ -23,7 +23,7 @@ export default function CtfSetOfCard({
             <CtfCard
               key={idx}
               entry={ele.fields as TypeCardFields}
-              address={true}
+              type='address'
             />
           );
         })}
