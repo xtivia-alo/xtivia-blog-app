@@ -58,7 +58,7 @@ export default function CtfHeader({ entry }: { entry: TypeHeaderFields }) {
         style={{
           maxWidth: `${maxWidth}px`,
         }}
-        className='fixed h-full w-full'
+        className='z-50 fixed h-full w-full'
       >
         {!isDesktop && (
           <NavigationMenu

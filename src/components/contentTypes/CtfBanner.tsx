@@ -12,6 +12,7 @@ export default function CtfBanner({
     headlineSize,
     subText,
     textColor,
+    textAlignment,
     backgroundImage,
     darkenImage,
     actions,
@@ -23,7 +24,27 @@ export default function CtfBanner({
 
   const options = {
     renderNode: {
-      [BLOCKS.PARAGRAPH]: (node: any, children: any) => <p>{children}</p>,
+      [BLOCKS.PARAGRAPH]: (node: any, children: any) => {
+        return (
+          <>
+            {children !== '' && (
+              <p
+                className={`leading-relaxed ${
+                  textAlignment === 'left'
+                    ? 'text-left'
+                    : textAlignment === 'right'
+                    ? 'text-right'
+                    : textAlignment === 'Center'
+                    ? 'text-center'
+                    : 'text-left'
+                } lg:text-left text-p-big md:text-p-big-md xl:text-p-big-lg`}
+              >
+                {children}
+              </p>
+            )}
+          </>
+        );
+      },
     },
   };
 
@@ -43,15 +64,13 @@ export default function CtfBanner({
       >
         <div
           style={{ maxWidth: `${contentMaxWidth}px`, color: textColor.value }}
-          className='h-full flex flex-col lg:flex-row lg:gap-4 lg:items-center justify-center m-auto'
+          className='h-full flex flex-col lg:flex-row lg:items-center justify-center m-auto'
         >
           <HeaderTag>{headline}</HeaderTag>
-          <div className='flex flex-row justify-center w-full lg:w-0 lg:h-[40px]'>
-            <hr className='w-1/4 lg:w-0 lg:h-full lg:border-l border-white'></hr>
+          <div className='flex flex-row justify-center'>
+            <hr className='w-[46px] lg:w-0 lg:h-[46px] mt-4 lg:mt-0 lg:ml-9 lg:mr-6 lg:border-l border-white'></hr>
           </div>
-          <div className='my-6'>
-            {documentToReactComponents(subText, options)}
-          </div>
+          {documentToReactComponents(subText, options)}
           <div className='flex flex-row gap-4 justify-center'>
             {actions.map((ele: any, idx: any) => {
               const { label, href, target, isExternal, displayStyle, theme } =
@@ -62,7 +81,7 @@ export default function CtfBanner({
               };
 
               return (
-                <div key={idx}>
+                <div className='ml-4' key={idx}>
                   {displayStyle === 'Link' ? (
                     <Link
                       className={
