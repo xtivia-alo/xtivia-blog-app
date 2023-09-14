@@ -53,12 +53,12 @@ export default function CtfHeader({ entry }: { entry: TypeHeaderFields }) {
   }, []);
 
   return (
-    <header className='w-full z-50 absolute top-0 left-0 lg:static'>
+    <header className='w-full absolute top-0 left-0 lg:static'>
       <div
         style={{
           maxWidth: `${maxWidth}px`,
         }}
-        className='h-full w-full'
+        className='fixed lg:static h-full w-full '
       >
         {!isDesktop && (
           <NavigationMenu
