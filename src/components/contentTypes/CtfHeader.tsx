@@ -67,37 +67,38 @@ export default function CtfHeader({ entry }: { entry: TypeHeaderFields }) {
             type='Mobile'
           />
         )}
-        {showOfficeDetails && (
-          <div className='bg-white w-full'>
-            <div
-              style={{ maxWidth: `${contentMaxWidth}px` }}
-              className='flex flex-row space-between m-auto pt-7 pb-5 px-4'
-            >
-              <div className='hidden lg:block h-full my-auto'>
-                <CtfImageWithFocalPoint entry={(logo as any).fields} />
-              </div>
-              <ul className='grow flex flex-row gap-x-11 space-between flex-wrap justify-center lg:justify-end'>
-                <AddressCards
-                  entry={
-                    setOfCards as EntryFieldTypes.Array<
-                      EntryFieldTypes.EntryLink<TypeCardSkeleton>
-                    >
-                  }
-                />
-              </ul>
+        <div
+          id='header-contact-info'
+          className='bg-white w-full hidden lg:block'
+        >
+          <div
+            style={{ maxWidth: `${contentMaxWidth}px` }}
+            className='flex flex-row space-between m-auto pt-7 pb-5 px-4'
+          >
+            <div className='hidden lg:block h-full my-auto'>
+              <CtfImageWithFocalPoint entry={(logo as any).fields} />
             </div>
-            {isDesktop && (
-              <div className='w-full bg-outer-space'>
-                <NavigationMenu
-                  contentMaxWidth={contentMaxWidth}
-                  entry={(navigationMenu as any).fields}
-                  logoEntry={(logo as any).fields}
-                  type='Desktop'
-                />
-              </div>
-            )}
+            <ul className='grow flex flex-row gap-x-10 space-between flex-wrap justify-center lg:justify-end'>
+              <AddressCards
+                entry={
+                  setOfCards as EntryFieldTypes.Array<
+                    EntryFieldTypes.EntryLink<TypeCardSkeleton>
+                  >
+                }
+              />
+            </ul>
           </div>
-        )}
+          {isDesktop && (
+            <div className='w-full bg-outer-space'>
+              <NavigationMenu
+                contentMaxWidth={contentMaxWidth}
+                entry={(navigationMenu as any).fields}
+                logoEntry={(logo as any).fields}
+                type='Desktop'
+              />
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );
