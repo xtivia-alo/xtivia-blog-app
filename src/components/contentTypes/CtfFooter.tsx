@@ -64,7 +64,9 @@ const FooterContactCard = ({ entry }: { entry: TypeFooterFields }) => {
       <div className='flex flex-col'>
         {(contactInfo as any).length > 0 &&
           (contactInfo as any).map((ele: any, idx: any) => {
-            return <CtfCard key={idx} entry={ele.fields} address={false} />;
+            return (
+              <CtfCard key={idx} entry={ele.fields} type='address-footer' />
+            );
           })}
       </div>
     </FooterCardContainer>
