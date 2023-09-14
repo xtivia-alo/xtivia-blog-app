@@ -31,10 +31,10 @@ function BorderContainer({
   if (hasBorder) {
     return (
       <div
-        className={`p-3 relative ${borderStyle} ${borderTopLeftStyle} ${borderTopRightStyle}`}
+        className={`p-5 relative ${borderStyle} ${borderTopLeftStyle} ${borderTopRightStyle}`}
       >
         <span
-          className={`p-2.5 ${borderStyle} ${borderBottomLeftStyle} ${borderBottomRightStyle}`}
+          className={`${borderStyle} ${borderBottomLeftStyle} ${borderBottomRightStyle}`}
         >
           {children}
         </span>
@@ -45,7 +45,7 @@ function BorderContainer({
   }
 }
 
-export default function CtfCard({ entry, address }: ICardProps) {
+export default function CtfCard({ entry, address = false }: ICardProps) {
   const {
     title,
     titleSize,
