@@ -72,7 +72,16 @@ function MobileNavbar({ contentMaxWidth, entry, logoEntry }: INavMenuProps) {
       setShowSidebar(false);
     }
     setShowOfficeDetails(!showOfficeDetails);
-    document.getElementById('header-contact-info')?.classList.remove('hidden');
+
+    const contactInfoEle = document.getElementById('header-contact-info');
+
+    if (contactInfoEle?.classList.contains('hidden')) {
+      document
+        .getElementById('header-contact-info')
+        ?.classList.remove('hidden');
+    } else {
+      document.getElementById('header-contact-info')?.classList.add('hidden');
+    }
   }
 
   const body = document.body;
