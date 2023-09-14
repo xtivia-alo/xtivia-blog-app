@@ -64,12 +64,11 @@ export default function CtfHeroImage({
           idx !== currentIndex && 'hidden'
         } ${darkenImage && 'brightness-75'}`}
       >
-        <div className='absolute inset-0 bg-white opacity-40 lg:opacity-0 z-0'></div>
         <div
           style={{ maxWidth: `${contentMaxWidth}px`, color: textColor.value }}
           className='h-full flex flex-col items-left justify-center m-auto'
         >
-          <div className='z-30 m-auto px-4 md:pr-96 lg:pr-4 lg:ml-[8.3333%] 2xl:ml-0'>
+          <div className='m-auto px-4 md:pr-96 lg:pr-4 lg:ml-[8.3333%] 2xl:ml-0'>
             {documentToReactComponents(headline, options)}
             {documentToReactComponents(subText, options)}
             <div
@@ -127,6 +126,8 @@ export default function CtfHeroImage({
             </div>
           </div>
         </div>
+        {/* white overlay over hero on mobile */}
+        <div className='absolute inset-0 bg-white opacity-40 lg:opacity-0'></div>
       </div>
     </>
   );
