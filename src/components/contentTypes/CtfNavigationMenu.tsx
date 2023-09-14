@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import CtfImageWithFocalPoint from './CtfImageWithFocalPoint';
 import CtfNavigationItem from './CtfNavigationItem';
 import { EntryFieldTypes } from 'contentful';
@@ -51,17 +51,23 @@ function DesktopNavbar({ contentMaxWidth, entry }: INavMenuProps) {
 function MobileNavbar({ contentMaxWidth, entry, logoEntry }: INavMenuProps) {
   const {
     mobileNavHeight,
+    setMobileNavHeight,
     showSidebar,
     setShowSidebar,
     showOfficeDetails,
     setShowOfficeDetails,
   } = useContext(AppContext) as AppContextType;
 
+  useEffect(() => {
+    const initialHeight = document.getElementById('mobileNav')?.offsetHeight;
+    console.log(initialHeight);
+    setMobileNavHeight(initialHeight ? (initialHeight as number) : 0);
+  }, []);
+
   // handler functions to toggle sidebar/office info in mobile
   function toggleSidebar() {
     if (!showSidebar && showOfficeDetails) {
       setShowOfficeDetails(!setShowOfficeDetails);
-
       document.getElementById('header-contact-info')?.classList.add('hidden');
     }
     setShowSidebar(!showSidebar);

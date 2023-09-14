@@ -37,8 +37,6 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
 
   // initial state settings based on window size
   useEffect(() => {
-    const initialHeight = document.getElementById('mobileNav')?.offsetHeight;
-    setMobileNavHeight(initialHeight ? (initialHeight as number) : 0);
     setIsDesktop(window.innerWidth > 992);
     setShowOfficeDetails(window.innerWidth > 992 ? true : false);
   }, []);

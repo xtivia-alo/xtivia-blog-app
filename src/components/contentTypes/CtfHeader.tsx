@@ -7,6 +7,7 @@ import CtfImageWithFocalPoint from './CtfImageWithFocalPoint';
 import { TypeHeaderFields, TypeCardSkeleton } from '@/lib/generated-types';
 import { EntryFieldTypes } from 'contentful';
 import { AppContext, AppContextType } from '@/providers/AppContextProvider';
+import { desktopWidth } from '../../constants';
 
 export default function CtfHeader({ entry }: { entry: TypeHeaderFields }) {
   const { logo, setOfCards, navigationMenu, maxWidth, contentMaxWidth } = entry;
@@ -25,7 +26,7 @@ export default function CtfHeader({ entry }: { entry: TypeHeaderFields }) {
   // useEffect - add an event listener to check width, always show office details when desktop
   useEffect(() => {
     function checkScreenWidth() {
-      if (window.innerWidth <= 992) {
+      if (window.innerWidth <= desktopWidth) {
         setIsDesktop(false);
         setShowOfficeDetails(false);
         setMobileNavHeight(
@@ -35,7 +36,7 @@ export default function CtfHeader({ entry }: { entry: TypeHeaderFields }) {
         );
       }
 
-      if (window.innerWidth > 992) {
+      if (window.innerWidth > desktopWidth) {
         // on desktop resize - always hide the sidebar, always hide office details
         setIsDesktop(true);
         setShowSidebar(false);

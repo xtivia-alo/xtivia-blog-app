@@ -103,7 +103,7 @@ export default function CtfCard({ entry, address = false }: ICardProps) {
             : textAlignment.toString() === 'Justify'
             ? 'text-justify'
             : 'text-left'
-        } ${address && 'pl-3.5'}`}
+        } ${address && 'pt-3.5 md:pl-3.5 md:pt-0 md:text-left'}`}
       >
         {title &&
           (address ? (
