@@ -7,7 +7,6 @@ import type {
 } from 'contentful';
 import type { TypeBannerSkeleton } from './TypeBanner';
 import type { TypeBannerCarouselSkeleton } from './TypeBannerCarousel';
-import type { TypeCardsWithFormSkeleton } from './TypeCardsWithForm';
 import type { TypeFooterSkeleton } from './TypeFooter';
 import type { TypeFormSkeleton } from './TypeForm';
 import type { TypeGallerySkeleton } from './TypeGallery';
@@ -26,7 +25,6 @@ export interface TypePageLandingFields {
     EntryFieldTypes.EntryLink<
       | TypeBannerCarouselSkeleton
       | TypeBannerSkeleton
-      | TypeCardsWithFormSkeleton
       | TypeFooterSkeleton
       | TypeFormSkeleton
       | TypeGallerySkeleton

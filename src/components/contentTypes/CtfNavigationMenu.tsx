@@ -11,7 +11,7 @@ import { AppContext, AppContextType } from '@/providers/AppContextProvider';
 import CustomIcon from '../CustomIcon';
 
 interface INavMenuProps {
-  maxWidth: EntryFieldTypes.Integer;
+  contentMaxWidth: EntryFieldTypes.Integer;
   entry: TypeNavigationMenuFields;
   logoEntry: TypeImageWithFocalPointFields;
   type: 'Mobile' | 'Desktop';
@@ -23,14 +23,14 @@ interface INavigationItems
       EntryFieldTypes.EntryLink<TypeNavigationItemSkeleton>
     > {}
 
-function DesktopNavbar({ maxWidth, entry }: INavMenuProps) {
+function DesktopNavbar({ contentMaxWidth, entry }: INavMenuProps) {
   return (
     <nav
-      style={{ maxWidth: ` ${maxWidth}px` }}
-      className='m-auto px-6 font-black'
+      style={{ maxWidth: ` ${contentMaxWidth}px` }}
+      className='m-auto px-4 font-black'
     >
       {(entry.navigationItems as INavigationItems).length > 0 && (
-        <ul className='flex flex-row text-white gap-10 text-xs'>
+        <ul className='flex flex-row text-white gap-11 py-4'>
           {(entry.navigationItems as INavigationItems).map((ele, idx) => {
             return (
               <li key={idx} className='flex items-center'>
@@ -48,8 +48,9 @@ function DesktopNavbar({ maxWidth, entry }: INavMenuProps) {
   );
 }
 
-function MobileNavbar({ maxWidth, entry, logoEntry }: INavMenuProps) {
+function MobileNavbar({ contentMaxWidth, entry, logoEntry }: INavMenuProps) {
   const {
+    mobileNavHeight,
     showSidebar,
     setShowSidebar,
     showOfficeDetails,
@@ -81,21 +82,20 @@ function MobileNavbar({ maxWidth, entry, logoEntry }: INavMenuProps) {
     html.offsetHeight
   );
 
-  const navHeight = document.getElementById('mobileNav')?.offsetHeight;
   const windowHeight = window.innerHeight;
 
   // calc maxHeight of document scroll height, or height of the window (so that the sidebar is sized correctly)
   const maxHeight = Math.max(
-    height - (navHeight ? navHeight : 0),
-    windowHeight - (navHeight ? navHeight : 0)
+    height - (mobileNavHeight ? mobileNavHeight : 0),
+    windowHeight - (mobileNavHeight ? mobileNavHeight : 0)
   );
 
   return (
     <>
       <nav
         id='mobileNav'
-        style={{ maxWidth: ` ${maxWidth}px` }}
-        className='flex flex-row items-center justify-between border-b'
+        style={{ maxWidth: ` ${contentMaxWidth}px` }}
+        className='flex flex-row p-1 items-center justify-between border-b bg-white'
       >
         <div className='flex flex-row'>
           <button className='px-2' onClick={toggleSidebar}>
@@ -105,7 +105,7 @@ function MobileNavbar({ maxWidth, entry, logoEntry }: INavMenuProps) {
             <CtfImageWithFocalPoint entry={logoEntry} />
           </div>
         </div>
-        <button className='px-2' onClick={toggleOfficeDetails}>
+        <button className='mr-4' onClick={toggleOfficeDetails}>
           <CustomIcon width={32} height={32} path='mdi:dots-vertical' />
         </button>
       </nav>

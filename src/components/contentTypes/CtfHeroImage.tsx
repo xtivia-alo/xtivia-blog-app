@@ -13,7 +13,6 @@ export default function CtfHeroImage({
 }) {
   const {
     headline,
-    headlineSize,
     subText,
     textColor,
     image,
@@ -24,11 +23,30 @@ export default function CtfHeroImage({
     maxWidth,
   } = entry;
 
-  const HeaderTag = headlineSize as any;
-
   const options = {
     renderNode: {
-      [BLOCKS.PARAGRAPH]: (node: any, children: any) => <p>{children}</p>,
+      [BLOCKS.HEADING_1]: (node: any, children: any) => {
+        return (
+          <>
+            {children !== '' && (
+              <h1 className='whitespace-pre-line text-center md:text-left'>
+                {children}
+              </h1>
+            )}
+          </>
+        );
+      },
+      [BLOCKS.PARAGRAPH]: (node: any, children: any) => {
+        return (
+          <>
+            {children !== '' && (
+              <p className='mt-3 leading-relaxed whitespace-pre-line text-p-big md:text-p-big-md xl:text-p-big-lg '>
+                {children}
+              </p>
+            )}
+          </>
+        );
+      },
     },
   };
 
@@ -40,70 +58,73 @@ export default function CtfHeroImage({
           backgroundImage: `url(https:${
             (image as any).fields.image.fields.file.url
           })`,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'auto',
+          backgroundSize: 'cover',
         }}
-        className={`px-4 lg:px-0 h-full w-full ${
+        className={`relative h-full w-full bg-center pb-16 pt-16 md:pb-40 md:pt-32 lg:pb-60 lg:pt-32 ${
           idx !== currentIndex && 'hidden'
         } ${darkenImage && 'brightness-75'}`}
       >
+        <div className='absolute inset-0 bg-white opacity-40 lg:opacity-0 z-0'></div>
         <div
           style={{ maxWidth: `${contentMaxWidth}px`, color: textColor.value }}
-          className='h-full flex flex-col items-left justify-center gap-4 m-auto'
+          className='h-full flex flex-col items-left justify-center m-auto'
         >
-          <HeaderTag>{headline}</HeaderTag>
-          {documentToReactComponents(subText, options)}
-          <div
-            className={`flex ${
-              actionAlignment === 'Horizontal'
-                ? 'flex-row gap-4'
-                : 'flex-col gap-2'
-            }`}
-          >
-            {actions.map((ele: any, idx: any) => {
-              const { label, href, target, isExternal, displayStyle, theme } =
-                ele.fields;
+          <div className='z-30 m-auto px-4 md:pr-96 lg:pr-4 lg:ml-[8.3333%] 2xl:ml-0'>
+            {documentToReactComponents(headline, options)}
+            {documentToReactComponents(subText, options)}
+            <div
+              className={`flex ${
+                actionAlignment === 'Horizontal'
+                  ? 'flex-row gap-4 justify-center md:justify-start'
+                  : 'flex-col gap-2'
+              }`}
+            >
+              {actions.map((ele: any, idx: any) => {
+                const { label, href, target, isExternal, displayStyle, theme } =
+                  ele.fields;
 
-              const handleClick = () => {
-                location.href = href ? href : '/';
-              };
+                const handleClick = () => {
+                  location.href = href ? href : '/';
+                };
 
-              return (
-                <div key={idx}>
-                  {displayStyle === 'Link' ? (
-                    <Link
-                      className={
-                        theme === 'primary'
-                          ? 'primary-btn'
-                          : theme === 'secondary'
-                          ? 'secondary-btn'
-                          : theme === 'tertiary'
-                          ? 'tertiary-btn'
-                          : 'image-btn'
-                      }
-                      href={href ? href : '/'}
-                    >
-                      {label}
-                    </Link>
-                  ) : (
-                    <button
-                      className={
-                        theme === 'primary'
-                          ? 'primary-btn'
-                          : theme === 'secondary'
-                          ? 'secondary-btn'
-                          : theme === 'tertiary'
-                          ? 'tertiary-btn'
-                          : 'image-btn'
-                      }
-                      onClick={handleClick}
-                    >
-                      {label}
-                    </button>
-                  )}
-                </div>
-              );
-            })}
+                return (
+                  <div className='mt-5' key={idx}>
+                    {displayStyle === 'Link' ? (
+                      <Link
+                        className={`min-w-[160px]
+                          ${
+                            theme === 'primary'
+                              ? 'primary-btn'
+                              : theme === 'secondary'
+                              ? 'secondary-btn'
+                              : theme === 'tertiary'
+                              ? 'tertiary-btn'
+                              : 'image-btn'
+                          }`}
+                        href={href ? href : '/'}
+                      >
+                        {label}
+                      </Link>
+                    ) : (
+                      <button
+                        className={
+                          theme === 'primary'
+                            ? 'primary-btn'
+                            : theme === 'secondary'
+                            ? 'secondary-btn'
+                            : theme === 'tertiary'
+                            ? 'tertiary-btn'
+                            : 'image-btn'
+                        }
+                        onClick={handleClick}
+                      >
+                        {label}
+                      </button>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

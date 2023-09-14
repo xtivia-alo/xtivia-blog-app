@@ -7,7 +7,12 @@ import {
   TypeBannerCarouselFields,
   TypeHeroImageSkeleton,
 } from '@/lib/generated-types';
-import { useState, MouseEvent } from 'react';
+import { useState, MouseEvent, useContext } from 'react';
+import { AppContext, AppContextType } from '@/providers/AppContextProvider';
+
+interface IHeroImages
+  extends Array<any>,
+    EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeHeroImageSkeleton>> {}
 
 export default function CtfBannerCarousel({
   entry,
@@ -17,9 +22,9 @@ export default function CtfBannerCarousel({
   const { banners } = entry;
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  interface IHeroImages
-    extends Array<any>,
-      EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeHeroImageSkeleton>> {}
+  const { isDesktop, mobileNavHeight } = useContext(
+    AppContext
+  ) as AppContextType;
 
   const handleIncrease = (e: MouseEvent<HTMLButtonElement>) => {
     if (currentIndex === (banners as IHeroImages).length - 1) {
@@ -40,7 +45,10 @@ export default function CtfBannerCarousel({
   };
 
   return (
-    <div className='relative flex flex-row items-center h-[520px]'>
+    <div
+      style={{ marginTop: `${!isDesktop ? mobileNavHeight : 0}px` }}
+      className='relative flex flex-row items-center'
+    >
       <div className='h-full absolute left-0 items-center hidden md:flex'>
         <button
           onClick={handleDecrease}

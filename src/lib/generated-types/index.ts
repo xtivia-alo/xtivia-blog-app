@@ -1,8 +1,9 @@
 export type { TypeAddressCard, TypeAddressCardFields, TypeAddressCardSkeleton } from "./TypeAddressCard";
 export type { TypeBanner, TypeBannerFields, TypeBannerSkeleton } from "./TypeBanner";
 export type { TypeBannerCarousel, TypeBannerCarouselFields, TypeBannerCarouselSkeleton } from "./TypeBannerCarousel";
+export type { TypeBlog, TypeBlogFields, TypeBlogSkeleton } from "./TypeBlog";
 export type { TypeCard, TypeCardFields, TypeCardSkeleton } from "./TypeCard";
-export type { TypeCardsWithForm, TypeCardsWithFormFields, TypeCardsWithFormSkeleton } from "./TypeCardsWithForm";
+export type { TypeCategories, TypeCategoriesFields, TypeCategoriesSkeleton } from "./TypeCategories";
 export type { TypeFooter, TypeFooterFields, TypeFooterSkeleton } from "./TypeFooter";
 export type { TypeForm, TypeFormFields, TypeFormSkeleton } from "./TypeForm";
 export type { TypeGallery, TypeGalleryFields, TypeGallerySkeleton } from "./TypeGallery";
@@ -11,13 +12,13 @@ export type { TypeHeroImage, TypeHeroImageFields, TypeHeroImageSkeleton } from "
 export type { TypeIcon, TypeIconFields, TypeIconSkeleton } from "./TypeIcon";
 export type { TypeImageWithFocalPoint, TypeImageWithFocalPointFields, TypeImageWithFocalPointSkeleton } from "./TypeImageWithFocalPoint";
 export type { TypeLink, TypeLinkFields, TypeLinkSkeleton } from "./TypeLink";
-export type { TypeMarketoForm, TypeMarketoFormFields, TypeMarketoFormSkeleton } from "./TypeMarketoForm";
 export type { TypeNavigationItem, TypeNavigationItemFields, TypeNavigationItemSkeleton } from "./TypeNavigationItem";
 export type { TypeNavigationMenu, TypeNavigationMenuFields, TypeNavigationMenuSkeleton } from "./TypeNavigationMenu";
 export type { TypeOptinMonster, TypeOptinMonsterFields, TypeOptinMonsterSkeleton } from "./TypeOptinMonster";
 export type { TypePageLanding, TypePageLandingFields, TypePageLandingSkeleton } from "./TypePageLanding";
 export type { TypeSeo, TypeSeoFields, TypeSeoSkeleton } from "./TypeSeo";
 export type { TypeSeoMeta, TypeSeoMetaFields, TypeSeoMetaSkeleton } from "./TypeSeoMeta";
+export type { TypeSetOfBlogs, TypeSetOfBlogsFields, TypeSetOfBlogsSkeleton } from "./TypeSetOfBlogs";
 export type { TypeSetOfCard, TypeSetOfCardFields, TypeSetOfCardSkeleton } from "./TypeSetOfCard";
 export type { TypeSetOfTestimonials, TypeSetOfTestimonialsFields, TypeSetOfTestimonialsSkeleton } from "./TypeSetOfTestimonials";
 export type { TypeTestimonial, TypeTestimonialFields, TypeTestimonialSkeleton } from "./TypeTestimonial";

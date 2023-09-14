@@ -14,12 +14,12 @@ export default function CtfSetofTestimonials(
 
   const responsive = {
     desktop: {
-      breakpoint: { max: 3000, min: 1024 },
+      breakpoint: { max: 3000, min: 992 },
       items: 3,
       slidesToSlide: 3, // optional, default to 1.
     },
     tablet: {
-      breakpoint: { max: 1024, min: 640 },
+      breakpoint: { max: 992, min: 640 },
       items: 2,
       slidesToSlide: 2, // optional, default to 1.
     },

@@ -14,8 +14,8 @@ export default function XIcon({ entry }: IIconProps) {
 
   return (
     <CustomIcon
-      width={iconSizeMap[iconSize as keyof typeof iconSizeMap].width}
-      height={iconSizeMap[iconSize as keyof typeof iconSizeMap].height}
+      width={iconSize}
+      height={iconSize}
       color={value as string}
       path={iconName}
     />

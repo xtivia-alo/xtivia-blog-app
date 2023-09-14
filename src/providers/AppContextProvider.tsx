@@ -12,6 +12,8 @@ import {
 export interface AppContextType {
   isDesktop: boolean;
   setIsDesktop: Dispatch<SetStateAction<boolean>>;
+  mobileNavHeight: number;
+  setMobileNavHeight: Dispatch<SetStateAction<number>>;
   showSidebar: boolean;
   setShowSidebar: Dispatch<SetStateAction<boolean>>;
   showOfficeDetails: boolean;
@@ -24,6 +26,9 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
   // check desktop
   const [isDesktop, setIsDesktop] = useState(true);
 
+  // get height of navbar
+  const [mobileNavHeight, setMobileNavHeight] = useState(0);
+
   // show mobile sidebar
   const [showSidebar, setShowSidebar] = useState(false);
 
@@ -32,8 +37,10 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
 
   // initial state settings based on window size
   useEffect(() => {
-    setIsDesktop(window.innerWidth > 1024);
-    setShowOfficeDetails(window.innerWidth > 1024 ? true : false);
+    const initialHeight = document.getElementById('mobileNav')?.offsetHeight;
+    setMobileNavHeight(initialHeight ? (initialHeight as number) : 0);
+    setIsDesktop(window.innerWidth > 992);
+    setShowOfficeDetails(window.innerWidth > 992 ? true : false);
   }, []);
 
   return (
@@ -41,6 +48,8 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
       value={{
         isDesktop,
         setIsDesktop,
+        mobileNavHeight,
+        setMobileNavHeight,
         showSidebar,
         setShowSidebar,
         showOfficeDetails,

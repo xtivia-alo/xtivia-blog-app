@@ -99,7 +99,7 @@ function DesktopNavigationItem({
         <Link
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          className={`py-4 pl-4 hover:text-picton-blue ${
+          className={`hover:text-picton-blue ${
             currentPath === linkRoute && 'text-picton-blue'
           }`}
           href={linkRoute}

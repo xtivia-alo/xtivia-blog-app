@@ -35,8 +35,7 @@ export default function CtfBanner({
           backgroundImage: `url(https:${
             (backgroundImage as any).fields.image.fields.file.url
           })`,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'auto',
+          backgroundSize: 'cover',
         }}
         className={`text-center px-8 py-20 lg:px-0 h-full w-full ${
           darkenImage && 'brightness-75'

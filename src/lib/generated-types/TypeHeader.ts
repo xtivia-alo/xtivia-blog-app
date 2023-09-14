@@ -11,6 +11,7 @@ export interface TypeHeaderFields {
     setOfCards?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeCardSkeleton>>;
     navigationMenu?: EntryFieldTypes.EntryLink<TypeNavigationMenuSkeleton>;
     actions?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLinkSkeleton>>;
+    contentMaxWidth: EntryFieldTypes.Integer;
     maxWidth: EntryFieldTypes.Integer;
 }
 
