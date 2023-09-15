@@ -15,6 +15,8 @@ export interface TypeCardFields {
     iconBorder?: EntryFieldTypes.Boolean;
     iconColor?: EntryFieldTypes.Object;
     imagePosition?: EntryFieldTypes.Symbol<"Bottom" | "Left" | "Right" | "Top">;
+    paddingHorizontal?: EntryFieldTypes.Integer;
+    paddingVertical?: EntryFieldTypes.Integer;
 }
 
 export type TypeCardSkeleton = EntrySkeletonType<TypeCardFields, "card">;

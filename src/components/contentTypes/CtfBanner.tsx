@@ -29,7 +29,7 @@ export default function CtfBanner({
           <>
             {children !== '' && (
               <p
-                className={`leading-relaxed ${
+                className={`mt-3 lg:mt-0 leading-relaxed ${
                   textAlignment === 'left'
                     ? 'text-left'
                     : textAlignment === 'right'
@@ -63,10 +63,10 @@ export default function CtfBanner({
         }`}
       >
         <div
-          style={{ maxWidth: `${contentMaxWidth}px`, color: textColor.value }}
-          className='h-full flex flex-col lg:flex-row lg:items-center justify-center m-auto'
+          style={{ color: textColor.value }}
+          className='grid-shell flex flex-col lg:flex-row lg:items-center justify-center mx-auto px-8'
         >
-          <HeaderTag>{headline}</HeaderTag>
+          <HeaderTag className='whitespace-nowrap'>{headline}</HeaderTag>
           <div className='flex flex-row justify-center'>
             <hr className='w-[46px] lg:w-0 lg:h-[46px] mt-4 lg:mt-0 lg:ml-9 lg:mr-6 lg:border-l border-white'></hr>
           </div>
@@ -81,7 +81,7 @@ export default function CtfBanner({
               };
 
               return (
-                <div className='ml-4' key={idx}>
+                <div className='mt-8 lg:mt-0 xl:ml-9' key={idx}>
                   {displayStyle === 'Link' ? (
                     <Link
                       className={`min-w-[160px]

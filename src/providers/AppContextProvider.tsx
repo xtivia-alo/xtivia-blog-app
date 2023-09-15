@@ -8,6 +8,7 @@ import {
   Dispatch,
   SetStateAction,
 } from 'react';
+import { desktopWidth } from '@/constants';
 
 export interface AppContextType {
   isDesktop: boolean;
@@ -37,8 +38,8 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
 
   // initial state settings based on window size
   useEffect(() => {
-    setIsDesktop(window.innerWidth > 992);
-    setShowOfficeDetails(window.innerWidth > 992 ? true : false);
+    setIsDesktop(window.innerWidth >= desktopWidth);
+    setShowOfficeDetails(window.innerWidth >= desktopWidth ? true : false);
   }, []);
 
   return (

@@ -14,31 +14,32 @@ export default function CtfTestimonial({
 
   const options = {
     renderNode: {
-      [BLOCKS.PARAGRAPH]: (node: any, children: any) => <p>{children}</p>,
-      [BLOCKS.QUOTE]: (node: any, children: any) => (
-        <blockquote>{children}</blockquote>
+      [BLOCKS.PARAGRAPH]: (node: any, children: any) => (
+        <p className='px-7 mt-6'>{children}</p>
       ),
     },
   };
 
   return (
-    <div className='w-[280px] h-[340px] p-12 flex flex-col border border-gray-200 items-center justify-center text-center'>
-      <div className='flex flex-row w-full my-4'>
-        <div className='grow flex justify-center items-center'>
-          <hr className='border-gray-300 grow mr-2' />
+    <div className='mx-2 md:mx-4 lg:mx-2 rounded-sm flex flex-col border border-gray-200 items-center justify-center text-center'>
+      <div className='px-1 py-10'>
+        <div className='flex flex-row justify-center my-4'>
+          <div className='flex justify-center items-center'>
+            <hr className='border-gray-300 w-[66px] mr-2' />
+          </div>
+          <CtfImageWithFocalPoint
+            entry={(profileImage as any)?.fields}
+            rounded={true}
+          />
+          <div className='flex justify-center items-center'>
+            <hr className='border-gray-300 w-[66px] ml-2' />
+          </div>
         </div>
-        <CtfImageWithFocalPoint
-          entry={(profileImage as any)?.fields}
-          rounded={true}
-        />
-        <div className='grow flex justify-center items-center'>
-          <hr className='border-gray-300 grow ml-2' />
+        {documentToReactComponents(testimonial as any, options)}
+        <div className='mt-6 flex flex-col'>
+          <span className='font-bold'>{name.toString()}</span>
+          <span className='text-gray-400'>{`(${title.toString()})`}</span>
         </div>
-      </div>
-      {documentToReactComponents(testimonial as any, options)}
-      <div className='mt-4 flex flex-col'>
-        <span className='font-bold'>{name.toString()}</span>
-        <span className='text-gray-400'>{`(${title.toString()})`}</span>
       </div>
     </div>
   );

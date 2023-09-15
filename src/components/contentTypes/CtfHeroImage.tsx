@@ -40,7 +40,7 @@ export default function CtfHeroImage({
         return (
           <>
             {children !== '' && (
-              <p className='mt-3 leading-relaxed whitespace-pre-line text-p-big md:text-p-big-md xl:text-p-big-lg '>
+              <p className='mt-3 leading-relaxed whitespace-pre-line text-p-big md:text-p-big-md xl:text-p-big-lg'>
                 {children}
               </p>
             )}

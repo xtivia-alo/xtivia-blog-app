@@ -57,6 +57,8 @@ export default function CtfCard({ entry, type = 'main' }: ICardProps) {
     iconColor,
     imagePosition,
     textAlignment,
+    paddingHorizontal,
+    paddingVertical,
   } = entry;
 
   const iconFields = materialDesignIcon && (materialDesignIcon as any).fields;
@@ -73,14 +75,17 @@ export default function CtfCard({ entry, type = 'main' }: ICardProps) {
 
   return (
     <li
+      style={{
+        padding: `${paddingVertical ? paddingVertical : 0}px ${
+          paddingHorizontal ? paddingHorizontal : 0
+        }px`,
+      }}
       className={`flex ${
         imagePosition?.toString() === 'Top' ||
         imagePosition?.toString() === 'Bottom'
           ? 'flex-col'
           : 'flex-row'
-      } items-center ${type !== 'main' && 'md:flex-row'} ${
-        type === 'main' && `px-5 py-6 mx-5`
-      }`}
+      } items-center ${type !== 'main' && 'md:flex-row'}`}
     >
       {image && (
         <BorderContainer hasBorder={iconBorder}>

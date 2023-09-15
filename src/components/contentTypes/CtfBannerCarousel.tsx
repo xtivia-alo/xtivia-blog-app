@@ -46,8 +46,11 @@ export default function CtfBannerCarousel({
 
   return (
     <div
-      style={{ marginTop: `${!isDesktop ? mobileNavHeight : 0}px` }}
-      className='relative flex flex-row items-center'
+      style={{
+        maxWidth: '1920px',
+        marginTop: `${!isDesktop ? mobileNavHeight : 0}px`,
+      }}
+      className='w-full relative flex flex-row items-center'
     >
       <div className='h-full absolute left-0 items-center z-10 hidden md:flex'>
         <button

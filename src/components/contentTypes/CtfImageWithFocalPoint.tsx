@@ -14,7 +14,7 @@ export default function CtfImageWithFocalPoint({
 
   return (
     <Image
-      className={`${rounded && 'border rounded-full'}`}
+      className={`${rounded ? 'rounded-full' : 'rounded-sm'}`}
       src={`https:${logoImageEntry.file?.url}`}
       alt={entry.altText.toString()}
       width={logoDimensions.image?.width}

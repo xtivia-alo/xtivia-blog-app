@@ -26,7 +26,7 @@ export default function CtfHeader({ entry }: { entry: TypeHeaderFields }) {
   // useEffect - add an event listener to check width, always show office details when desktop
   useEffect(() => {
     function checkScreenWidth() {
-      if (window.innerWidth <= desktopWidth) {
+      if (window.innerWidth < desktopWidth) {
         setIsDesktop(false);
         setShowOfficeDetails(false);
         setMobileNavHeight(
@@ -36,7 +36,7 @@ export default function CtfHeader({ entry }: { entry: TypeHeaderFields }) {
         );
       }
 
-      if (window.innerWidth > desktopWidth) {
+      if (window.innerWidth >= desktopWidth) {
         // on desktop resize - always hide the sidebar, always hide office details
         setIsDesktop(true);
         setShowSidebar(false);
@@ -53,12 +53,12 @@ export default function CtfHeader({ entry }: { entry: TypeHeaderFields }) {
   }, []);
 
   return (
-    <header className='z-50 w-full absolute top-0 left-0 lg:static'>
+    <header className='w-full absolute top-0 left-0 lg:static'>
       <div
         style={{
           maxWidth: `${maxWidth}px`,
         }}
-        className='fixed lg:static h-full w-full '
+        className='fixed z-50 lg:static w-full '
       >
         {!isDesktop && (
           <NavigationMenu
