@@ -16,7 +16,7 @@ const FooterCardContainer = ({
   return (
     <div className='px-4 mt-12 lg:mt-0'>
       {title && <h4 className=''>{title}</h4>}
-      <hr className='mt-4 mb-7 border-gray-500 w-[70%] lg:w-auto lg:mr-[70px]' />
+      <hr className='mt-4 mb-7 border-gray-500 w-[70%] md:w-auto md:mr-[70px]' />
       {children}
     </div>
   );
@@ -79,11 +79,11 @@ const FooterSubscribeCard = ({ entry }: { entry: TypeFooterFields }) => {
   const { contactInfo } = entry;
   return (
     <FooterCardContainer title='Subscribe'>
-      <form className='mr-[155px]' action='submit'>
+      <form action='submit'>
         <label className='block mb-2' htmlFor='footer-input-email'>
           Get latest updates and offers.
         </label>
-        <div className='flex flex-row'>
+        <div className='flex flex-row mr-[47px] lg:mr-[155px]'>
           <input
             style={{
               borderTopRightRadius: '0px',
