@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useContext } from 'react';
 import { TypeNavigationItemFields } from '@/lib/generated-types';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import CustomIcon from '../CustomIcon';
+import { AppContext, AppContextType } from '@/providers/AppContextProvider';
 
 export interface INavMenuItemProps {
   entry: TypeNavigationItemFields;
@@ -19,15 +20,19 @@ function MobileNavigationItem({
   rootPath = '',
   idx,
 }: INavMenuItemProps) {
+  const { activeSubmenu, setActiveSubmenu } = useContext(
+    AppContext
+  ) as AppContextType;
+
   const { label, slug, children } = entry as any;
   const currentPath = usePathname();
   const linkRoute = `${rootPath}${slug === 'home' ? '' : slug}/`;
 
-  // need to fix - only one submenu should be showing at a time
-  const [showSubmenu, setShowSubmenu] = useState(false);
-
   function handleClick() {
-    setShowSubmenu(!showSubmenu);
+    if (setActiveSubmenu) {
+      setActiveSubmenu('');
+    }
+    setActiveSubmenu(linkRoute);
   }
 
   return (
@@ -46,7 +51,7 @@ function MobileNavigationItem({
           </button>
         )}
       </div>
-      {children?.length > 0 && showSubmenu && (
+      {children?.length > 0 && activeSubmenu === linkRoute && (
         <ul className='flex flex-col'>
           {children.map((ele: any, idx: any) => {
             return (

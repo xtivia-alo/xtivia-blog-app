@@ -122,7 +122,7 @@ function MobileNavbar({ contentMaxWidth, entry, logoEntry }: INavMenuProps) {
             <CtfImageWithFocalPoint entry={logoEntry} />
           </div>
         </div>
-        <button className='mr-4' onClick={toggleOfficeDetails}>
+        <button onClick={toggleOfficeDetails}>
           <CustomIcon width={32} height={32} path='mdi:dots-vertical' />
         </button>
       </nav>

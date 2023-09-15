@@ -6,8 +6,9 @@ export interface TypeCardFields {
     internalName: EntryFieldTypes.Symbol;
     title?: EntryFieldTypes.Symbol;
     titleSize: EntryFieldTypes.Symbol<"h1" | "h2" | "h3" | "h4" | "h5" | "h6">;
-    textAlignment: EntryFieldTypes.Symbol<"Center" | "Justify" | "Left" | "Right">;
+    horizontalHeaderRule: EntryFieldTypes.Boolean;
     subText: EntryFieldTypes.Symbol;
+    textAlignment: EntryFieldTypes.Symbol<"Center" | "Justify" | "Left" | "Right">;
     image?: EntryFieldTypes.EntryLink<TypeImageWithFocalPointSkeleton>;
     materialDesignIcon?: EntryFieldTypes.EntryLink<TypeIconSkeleton>;
     customIcon?: EntryFieldTypes.AssetLink;

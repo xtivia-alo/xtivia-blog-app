@@ -17,6 +17,8 @@ export interface AppContextType {
   setMobileNavHeight: Dispatch<SetStateAction<number>>;
   showSidebar: boolean;
   setShowSidebar: Dispatch<SetStateAction<boolean>>;
+  activeSubmenu: string;
+  setActiveSubmenu: Dispatch<SetStateAction<string>>;
   showOfficeDetails: boolean;
   setShowOfficeDetails: Dispatch<SetStateAction<boolean>>;
 }
@@ -32,6 +34,8 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
 
   // show mobile sidebar
   const [showSidebar, setShowSidebar] = useState(false);
+  // active subemnu on mobile sidebar
+  const [activeSubmenu, setActiveSubmenu] = useState('');
 
   // show menu with office details
   const [showOfficeDetails, setShowOfficeDetails] = useState(false);
@@ -51,6 +55,8 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
         setMobileNavHeight,
         showSidebar,
         setShowSidebar,
+        activeSubmenu,
+        setActiveSubmenu,
         showOfficeDetails,
         setShowOfficeDetails,
       }}

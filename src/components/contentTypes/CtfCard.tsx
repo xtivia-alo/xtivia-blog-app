@@ -49,6 +49,7 @@ export default function CtfCard({ entry, type = 'main' }: ICardProps) {
   const {
     title,
     titleSize,
+    horizontalHeaderRule,
     subText,
     materialDesignIcon,
     image,
@@ -89,7 +90,7 @@ export default function CtfCard({ entry, type = 'main' }: ICardProps) {
     >
       {image && (
         <BorderContainer hasBorder={iconBorder}>
-          <CtfImageWithFocalPoint entry={(image as any).fields} />
+          <CtfImageWithFocalPoint fill={true} entry={(image as any).fields} />
         </BorderContainer>
       )}
       {iconEntry && (
@@ -112,12 +113,18 @@ export default function CtfCard({ entry, type = 'main' }: ICardProps) {
       >
         {title &&
           (type === 'main' ? (
-            <HeaderTag className='mt-5'>{title.toString()}</HeaderTag>
+            <HeaderTag className={'mt-5'}>{title.toString()}</HeaderTag>
           ) : (
             <span className='font-bold text-black'>{title.toString()}</span>
           ))}
+        {horizontalHeaderRule && (
+          <div className='flex flex-row justify-left'>
+            <hr className='w-[46px] mt-2.5 border-b-2 border-picton-blue'></hr>
+          </div>
+        )}
+
         {type === 'main' ? (
-          <p className='text-gray-500 mt-5'>{subText.toString()}</p>
+          <p className={`text-gray-500 mt-5`}>{subText.toString()}</p>
         ) : (
           <span className='text-gray-500'>{subText.toString()}</span>
         )}

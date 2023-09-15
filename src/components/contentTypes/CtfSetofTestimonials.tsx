@@ -33,9 +33,6 @@ export default function CtfSetofTestimonials(
   };
 
   const handleClick = (type: 'left' | 'right') => {
-    console.log(ref.current);
-    console.log('hello');
-
     if (ref.current) {
       if (type === 'left') {
         (ref.current as any).previous();
