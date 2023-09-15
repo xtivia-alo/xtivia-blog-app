@@ -93,7 +93,12 @@ export default function CtfCard({ entry, type = 'main-card' }: ICardProps) {
           <CtfImageWithFocalPoint fill={true} entry={(image as any).fields} />
         </BorderContainer>
       )}
-      {iconEntry && (
+      {type === 'address-footer' && iconEntry && (
+        <BorderContainer hasBorder={iconBorder}>
+          <CtfIcon type='address-footer' entry={iconEntry} />
+        </BorderContainer>
+      )}
+      {type !== 'address-footer' && iconEntry && (
         <BorderContainer hasBorder={iconBorder}>
           <CtfIcon entry={iconEntry} />
         </BorderContainer>

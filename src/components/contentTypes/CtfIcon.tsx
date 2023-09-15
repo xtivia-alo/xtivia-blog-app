@@ -15,8 +15,8 @@ export default function XIcon({ entry, type = '' }: IIconProps) {
 
   return (
     <CustomIcon
-      width={iconSize}
-      height={iconSize}
+      width={type !== 'address-footer' ? iconSize : 24}
+      height={type !== 'address-footer' ? iconSize : 24}
       color={value as string}
       path={iconName}
     />
