@@ -6,10 +6,11 @@ interface TypeXIconFields {
 }
 
 interface IIconProps {
+  type?: string;
   entry: TypeXIconFields;
 }
 
-export default function XIcon({ entry }: IIconProps) {
+export default function XIcon({ entry, type = '' }: IIconProps) {
   const { iconName, iconSize, value } = entry;
 
   return (

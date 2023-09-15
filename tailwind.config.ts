@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+const plugin = require('tailwindcss/plugin');
 
 const config: Config = {
   content: [
@@ -68,6 +69,7 @@ const config: Config = {
         'half-rotate-ccw': 'half-rotate-ccw 0.2s ease-in-out both',
       },
       colors: {
+        aluminum: '#888c94',
         'dark-charcoal': '#333',
         'outer-space': '#323946',
         'picton-blue': '#44bef1',
@@ -75,6 +77,11 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addVariant }: { addVariant: any }) {
+      addVariant('child', '& > *');
+      addVariant('child-hover', '& > *:hover');
+    }),
+  ],
 };
 export default config;

@@ -24,7 +24,7 @@ export default async function Home() {
 
   return (
     <>
-      <div className='flex w-screen min-h-screen flex-col items-center'>
+      <div className='flex max-w-screen min-h-screen flex-col items-center'>
         <main className='w-full'>
           <LandingPage preview={false} page={page && page[0]} />
         </main>

@@ -6,7 +6,7 @@ import { ReactNode } from 'react';
 import { EntryFieldTypes } from 'contentful';
 
 interface ICardProps {
-  type?: 'address' | 'address-footer' | 'main';
+  type?: 'address' | 'main-card' | 'address-footer';
   entry: TypeCardFields;
 }
 
@@ -45,7 +45,7 @@ function BorderContainer({
   }
 }
 
-export default function CtfCard({ entry, type = 'main' }: ICardProps) {
+export default function CtfCard({ entry, type = 'main-card' }: ICardProps) {
   const {
     title,
     titleSize,
@@ -86,7 +86,7 @@ export default function CtfCard({ entry, type = 'main' }: ICardProps) {
         imagePosition?.toString() === 'Bottom'
           ? 'flex-col'
           : 'flex-row'
-      } items-center ${type !== 'main' && 'md:flex-row'}`}
+      } items-center ${type !== 'main-card' && 'md:flex-row'}`}
     >
       {image && (
         <BorderContainer hasBorder={iconBorder}>
@@ -100,7 +100,8 @@ export default function CtfCard({ entry, type = 'main' }: ICardProps) {
       )}
       <div
         className={`flex flex-col justify-center ${
-          textAlignment.toString() === 'Left'
+          type !== 'address-footer' &&
+          (textAlignment.toString() === 'Left'
             ? 'text-left'
             : textAlignment.toString() === 'Right'
             ? 'text-right'
@@ -108,14 +109,18 @@ export default function CtfCard({ entry, type = 'main' }: ICardProps) {
             ? 'text-center'
             : textAlignment.toString() === 'Justify'
             ? 'text-justify'
-            : 'text-left'
-        } ${type === 'address' && 'pt-3.5 md:pl-3.5 md:pt-0 md:text-left'}`}
+            : 'text-left')
+        } ${type === 'address' && 'pt-3.5 md:pl-3.5 md:pt-0 md:text-left'} ${
+          type === 'address-footer' && 'pl-3.5 text-left'
+        }`}
       >
         {title &&
-          (type === 'main' ? (
+          (type === 'main-card' ? (
             <HeaderTag className={'mt-5'}>{title.toString()}</HeaderTag>
           ) : (
-            <span className='font-bold text-black'>{title.toString()}</span>
+            <span className={`${type === 'address' && 'font-bold text-black'}`}>
+              {title.toString()}
+            </span>
           ))}
         {horizontalHeaderRule && (
           <div className='flex flex-row justify-left'>
@@ -123,10 +128,12 @@ export default function CtfCard({ entry, type = 'main' }: ICardProps) {
           </div>
         )}
 
-        {type === 'main' ? (
+        {type === 'main-card' ? (
           <p className={`text-gray-500 mt-5`}>{subText.toString()}</p>
         ) : (
-          <span className='text-gray-500'>{subText.toString()}</span>
+          <span className={`${type === 'address' && 'text-gray-500'}`}>
+            {subText.toString()}
+          </span>
         )}
       </div>
     </li>
