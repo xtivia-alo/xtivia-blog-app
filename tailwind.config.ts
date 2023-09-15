@@ -46,7 +46,7 @@ const config: Config = {
         h5: ['20px', { lineHeight: '1.2' }],
         'h5-lg': ['18px', { lineHeight: '1.55556' }],
         h6: ['16px', { lineHeight: '1.5' }],
-        'p-big': '22px',
+        'p-big': '16px',
         'p-big-md': '18px',
         'p-big-lg': '22px',
       },
