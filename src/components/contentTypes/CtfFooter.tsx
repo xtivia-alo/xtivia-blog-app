@@ -16,7 +16,7 @@ const FooterCardContainer = ({
   return (
     <div className='px-4 mt-12 lg:mt-0'>
       {title && <h4 className=''>{title}</h4>}
-      <hr className='mt-4 mb-7 border-gray-500 w-[70%] lg:fit lg:mr-[70px]' />
+      <hr className='mt-4 mb-7 border-gray-500 w-[70%] lg:w-auto lg:mr-[70px]' />
       {children}
     </div>
   );
@@ -79,7 +79,7 @@ const FooterSubscribeCard = ({ entry }: { entry: TypeFooterFields }) => {
   const { contactInfo } = entry;
   return (
     <FooterCardContainer title='Subscribe'>
-      <form action='submit'>
+      <form className='mr-[155px]' action='submit'>
         <label className='block mb-2' htmlFor='footer-input-email'>
           Get latest updates and offers.
         </label>
@@ -95,7 +95,7 @@ const FooterSubscribeCard = ({ entry }: { entry: TypeFooterFields }) => {
             type='text'
             placeholder='E-Mail'
           />
-          <button className='rounded-l-none primary-btn'>Send</button>
+          <button className='rounded-l-none primary-btn px-2'>Send</button>
         </div>
       </form>
     </FooterCardContainer>
